@@ -1,0 +1,20 @@
+Kubernetes Engine > CLusters > Enable > Create > Standard
+control version = static version > Create
+
+
+----------------------------------------------------
+
+install cloud sdk installer
+
+powershelli yöetici olaarak çalıştır
+
+set-executionpolicy -executionpolicy unrestricted
+A
+gcloud
+gcloud init
+y
+
+Clusters sekmesi altında oluşturulan clusterın yanında üç noktaya tıkla > Connect
+Command-line access altındaki komutu powershelle yapıştır
+
+kubectl get nodes

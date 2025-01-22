@@ -1,0 +1,17 @@
+helm bize kubernetes üzerinde paket yüklememize sağlar.
+
+uygulamanın paketlenmiş haline chart denir
+bu chartı alıp kubernetes üzerine yüklersek buna da release denir
+repository helm chartların bir arada tutulduğu yer
+
+helm search hub wordpress
+helm search repo wordpress
+//bu bilgisayara eklenmiş repositorylerde aratmak için
+
+
+//helm install wordpress1 bitnami/wordpress --namespace production
+helm install wordpress1 bitnami/wordpress
+
+helm status wordpress1
+helm show values bitnami/wordpress
+helm uninstall wordpress1

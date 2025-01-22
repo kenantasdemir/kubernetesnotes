@@ -1,0 +1,6 @@
+CRD -> Custom Resource Definiton
+Operator
+Operator Framework
+
+CKA -> Certified Kubernetes Administrator
+CKAD -> Certified Kubernetes Application Developer

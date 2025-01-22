@@ -1,0 +1,41 @@
+kube-apiserver, kubernetes API'nı ortaya çıkaran Kubernetes control plane'in en önemli bileşeni ve giriş noktasıdır.
+Tüm diğer komponent ve node bileşenlerinin direkt iletişim kurabidiği tek komponenttir.
+
+Etcd tüm cluster verisi, metadata bilgileri ve Kubernetes'de oluşturulan tüm objelerin bilgilerinin tutulduğu key-value veri deposudur.
+
+kube-scheduler yeni oluşturulan ya da bir node ataması yapılmamış Podları izler ve üzerinde çalışacakları bir node seçer
+
+Kube-controller-manager
+Mantıksal olarak, her controller ayrı bir süreçtir, 
+ancak karmaşıklığı azaltmak için hepsi tek bir binary olarak derlenmiştir ve
+tek bir process olarak çalışır.Bu controllerların bazıları şunlardır:
+Node controller
+Job controller
+Service account & Token controller
+endpoints controller
+
+
+Container runtime
+containerları çalıştırmaktan sorumlu olan yazılımdır.
+Kubernetes birkaç container runtime deskler:
+Docker
+containerd
+CRI-O
+
+Kubelet
+clusterdaki her node çalışan bir agenttır
+Pod içerisinde tanımlanan containerların çalıştırılmasını sağlar.
+
+Kubelet çeşitli mekanizmalar aracılığıyla sağlanan bir dizi Pod tanımı alır ve bu pod tanımında belirtilen
+containerların çalışır durumda ve sağlıklı olmasını sağlar.
+
+
+Kube Proxy
+nodelar üstünde ağ kurallarını yönetir.
+bu ağ kuralları, clusterın içindeki veya dışındaki ağ oturumlarından podlarınızla ağ iletişimine izin verir.
+
+
+
+Semantic versioning
+Kubernetes semantik versiyonlamayı takip eder ve x.y.z şeklinde versiyonlanır. X majör versiyonu, y minörü, z de patch numarasını belirtir.
+Kubernetes senede 3 minor versiyon yayınlar. Her minör versiyon yayınlandığı tarihten itibaren 12 ay boyunca desteklenir. Kısacası 12 ay boyunca her ay patch versiyonları yayınlanarak hatalar ve güvenlik açıkları giderilir

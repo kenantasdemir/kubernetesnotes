@@ -1,0 +1,27 @@
+kubectl apply -f podwithoutsecret.yaml
+kubectl get pods -w
+kubectl describe pods imagesecrettest1
+
+README.md dosyasındaki adımları takip et
+
+her master/worker nodun içerisinde kubelet diye bir servis var bu servis kubeapiserver ile iletişime geçer
+kubernetes kurulurken kubernetesin kendisi de bir pod olarak kuruluyor
+
+kubeapiserverin kendisi de bir pod olarak çalışıyor
+
+api server kullanılmadan kubelet ile oluşturulan podlara static pod denir.
+
+static pod olarak oluşturulan podların birebir karşılığı da kubeapiserver üzerinde oluşturulur. 
+
+etcd/kubernetes/manifests/
+bu klasörün içine konan bütün yaml dosyalarını containerd, docker ya da hangi engine kuruluysa onunla konuşarak
+ayağa kaldırıyor bir tane pod yaratıyor
+
+
+terminal1
+kubectl get nodes
+kubectl get pods
+kubectl get pods -A
+
+terminal2
+ 

@@ -1,0 +1,207 @@
+kubectl sayesinde kubernete clusterları ile iletişim kurarız
+kubectl bağlanacağı clusterın bilgisini config dosyasından okur.
+kubectl aracına oluşturduğumuz config dosyasını parametre olarak verebiliriz.
+
+config dosyasının içerisinde Kubernetes cluster bağlantı bilgilerini ve oraya bağlanırken kullanmak istediğimiz kullanıcıları belirtiriz.
+daha sonra bu bağlantı bilgileri ve kullanıcıları ve ek olarak namespace bilgilerini de oluşturarak contextler yaratırız.
+kubectl varsayılan olarak $HOME/.kube/ altındaki config isimli dosyaya bakar.
+KUBECONFIG oratm değişkeni değerini değiştirerek bu davranışı değiştirebiliriz.
+
+aynı clustera birden farklı yetkiye sahip kullanıcılarla bağlanabiliriz.
+
+kubectl config
+//alt komutları listeler.
+
+kubectl config get-contexts
+//contextleri görüntüler.
+
+kubectl config get-clusters
+
+kubectl config set-cluster myfirstcluster
+
+kubectl config set-context myfirstcontext
+
+kubectl config rename-context myfirstcontext myupdatedcontext
+
+kubectl config get-contexts
+
+kubectl config current-context
+//o anki contexti görüntüler.
+
+kubectl get pods
+//oluşturulmuş podları listeler.
+
+
+kubectl config use-context docker-desktop
+//docker-desktop isimli contexti kullan demiş olduk.
+
+kubectl get nodes
+//oluşturulmuş nodeları listeler.
+
+birden fazla context tanımlanabilir fakat aynı anda sadece bir tanesi kullanılabilir.
+kubetctl ile gireceğimiz tüm komutlar mevcut context altında işlenir
+
+--------------------------------------------------------------------------
+
+Podlar
+Podlar kuberneteste oluşturabileceğiniz ve yönetebileceğiniz en küçük birimlerdir.
+podlar bir ya da daha fazla container barındırabilir
+ama çoğu durumda pod tek container barındırır.
+
+Api-server, bu uid ve IP’yi etcd’ye kaydeder. 
+Scheduler ise herhangi bir podun node ile ilişkisi kurulmadığını görürse, 
+o podu çalıştırması için uygun bir worker node seçer ve bu bilgiyi pod tanımına ekler. 
+Pod içerisinde çalışan kubelet servisi bu pod tanımını görür ve ilgili container’ı çalıştırır.
+
+her podun eşsiz bir id değeri vardır.
+her pod eşsiz bir ip adresine sahiptir.
+
+aynı pod içeriisndeki containerlar aynı node üstünde çalıştırılır
+ve bu containerlar birbirleriyle localhost üstünden haberleşebilirler.
+
+bir pod oluşturulurken aşağıdaki aşamalar gerçekleşir
+Pending
+creating
+ImagePullBackOff
+Running
+Succeded
+Failed
+CrashLoopBackOff
+Terminating
+
+
+--------------------------------------------------------------------------
+Container imajlarında, container oluşturulup çalıştırıldığı zaman başlatılması belirlenene bir uygulama bulunur.
+Bu uygulama çalıştığı sürece container da çalışır durumdadır.
+Fakat uygulama çalışmayı bırakırsa container da durdurulur. Uygulamanın çalışmayı bırakması da 3 şekilde olu.
+
+Uygulama görevlerini tamamlayıp otomatik şekilde hata vermeden kapanır.
+Kullanıcı ya da sistem uygulamaya kapanma sinyali gönderir ve hata vermeden kapanır.
+Ya da hata verir, çöker ve hata kodu oluşturarak kapanır.
+
+işte bu durumları çözmek için 3 adet RestartPolicy bulunur.
+Always --> hata çıkması durumunda ya da manuel olarak durdurulan container her zaman yeniden çalışır.
+On-Failure --> hata kaynaklı çalışma durursa yeniden başlar.
+Never --> container çalışmayı durdurursa yeniden başlatmaz.
+
+--------------------------------------------------------------------------
+
+				Kubernetes label
+			   example.com/tier:front-end
+			Prefix "Opsiyonel" Anahtar Değer
+
+Prefix "önek" kısmı opsiyoneldir. Zorunlu değildir.
+kubernetes.io/ ve k8s.io/ önekleri, Kubernetes çekirdek bileşenleri için ayrılmıştır. Bu bileşenler tarafından kullanılır.
+Anahtar ve değer alanları 63 karakter veya daha az olmalıdır (değer boş olabilir) Alfanumerik bir karakterle ([a-z0-9 A-Z]) başlamalı ve bitmelidir
+Tire (-), alt çizgi (_), noktalar (.) ve arasında alfanumerik değerler içerebilir.
+
+--------------------------------------------------------------------------
+
+kubectl cluster-info
+//cluster hakkında bilgi verir.
+
+kubectl cp --help
+//Kubernetes kümesinde çalışan bir pod'dan yerel makinenize veya 
+//yerel makinenizden bir pod'a dosya kopyalamak için kullanabileceğiniz 
+//kubectl cp komutunun kullanımı hakkında bilgi sağlar.
+
+kubectl get pods
+//tüm podları listeler
+
+kubectl get deployments
+//mevcut deployment nesnelerini listeler.
+
+kubectl get namespaces
+
+kubectl get secrets
+
+kubectl delete pods testpod
+//testpod isimli pod nesnesi silinir.
+
+kubectl kullanırken aksi belirtilmedikçe tüm komutlar contextde set edilmiş namespace 
+üstünde uygulanır. namespace yoksa default namespace olan kullanılır.
+
+kubectl get pods -n kube-system
+//kube-system içindeki pdoları görüntüler.
+
+kubectl get pods --all-namespaces = kubectl get pods -A
+//eşittir ifadesinin sağındaki ve solundaki komutlar birbirinin yaptığı aynı işi yapar.
+//tüm namespacelerin altındaki podları listeler.
+
+kubectl get pods -A -o wide
+//tüm namespacelerin altındaki podları geniş bir formatta görüntüler
+
+kubectl get pods -A -o yaml
+//tüm namespacelerin altındaki podları yaml formatında listeler.
+
+kubectl get pods -A -o json
+////tüm namespacelerin altındaki podları json formatında listeler.
+
+kubectl get pods -A json | jq  -r ".items[].spec.containers[].name"
+
+man jq
+kubectl explain pod
+//pod nesneleri hakkında bilgiler verir.
+
+kubectl explain deployment
+//deployment nesneleri hakkında bilgiler verir.
+
+--------------------------------------------------------------------------
+
+Init Container
+Uygulama container başlatılmadan önce ilk olarak init container çalışır
+init container yapması gerek işlemleri tamamlar ve kapanır.
+uygulama container init container kapatıldıktan sonra çalışmaya başlar.
+init container işlemlerini tamamlamadan uygulama container başlatılmaz.
+
+
+--------------------------------------------------------------------------
+
+Namespaces
+adlar için bir kapsam sağlar
+kaynak adlarının bir namespace içinde benzersiz olması gerekir.
+namepsace birbirinin içine yerleştirilemez ve her kubernetes kaynağı yalnızca bir namspace içinde olabilir.
+
+namespaceler cluster kaynaklarını birden çok kullanıcı arasında bölmenin bir yoludur.
+
+kubectl get namespaces
+//tüm namespaceleri listeler.
+
+--------------------------------------------------------------------------
+
+Deployment
+bir deployementda istenen durumu tanımlarsınız ve deployement controller,
+mevcut durumu istenilen durumla karşılaştırıp gerekli aksiyonları alır.
+
+kubectl get deployments
+
+
+--------------------------------------------------------------------------
+
+ReplicaSet
+bir replicasetin amacı, herhangi bir zamanda çalışan kararlı bir replika pod setini sürdürmektir.
+bu nedenle genellikle belirli sayıda özdeş podun kullanılabilirliğini garanti etmek için kullanılır.
+
+kubectl get replicasets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

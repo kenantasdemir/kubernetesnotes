@@ -1,0 +1,107 @@
+terminal1
+kubectl apply -f podinitcontainer.yaml
+kubectl apply -f service1.yaml
+kubectl logs -f initcontainerpod -c initcontainer
+
+terminal2
+kubectl describe pod initcontainerpod
+watch -n 2 kubectl describe pod initcontainerpod
+//initcontainerpod isimli podun durumunu anlık olarak listeler. -n 2 parametresi ile 2 saniyede bir günceller.
+
+
+
+
+----------------------------------------------------------------------------------------------
+
+kubectl apply -f mypodlabel.yaml
+//mypodlabel.yaml dosyası içeriğindeki özelliklere uygun bir pod oluşturur.
+
+kubectl get pods
+//oluşturulmuş podları listeler.
+
+kubectl get pods -l "hi" --show-labels
+//hi adlı bir labela sahip olan tüm podları labellarıyla birlikte görüntüler.s
+
+kubectl get pods -l "hi=Merhaba" --show-labels
+//hi adlı etiketi olan ve etiket değeri Merhaba olan podları labellarıyla birlikte listeler.
+
+kubectl get pods -l "hi=Merhaba,world=Dunya" --show-labels
+//birden fazla etiketi olan podları etiketleriyle birlikte görüntüler. etiketler virgülle ayrılır.
+
+kubectl get pods -l "hi=Merhaba,world!=Dunya" --show-labels
+// hi etiket değeri Merhaba olan ve world etiket değeri Dunya olmayan podları listeler.s
+
+kubectl get pods -l "hi,world=Dunya" --show-labels
+// hi ve world etiketleri olan podları listeler.
+//bu podlardan sadece world etiket değeri World olan podları listeler.s
+
+kubectl get pods -l "hi=Merhaba,hi=Hola" --show-labels
+//hi etiket değeri Merhaba ya da Hola olan podları listeler.
+
+//set base
+kubectl get pods -l "app in (myfirstapp)" --show-labels
+//app etiketi içinde myfirstapp değerine sahip olan podları listeler.
+
+kubectl get pods -l "app in (myfirstapp,mysecondapp)" --show-labels
+//app etiketi içinde myfirstapp ve mysecondapp değerine sahip olan podları listeler.
+
+kubectl get pods -l "app notin (firstapp,secondapp)" --show-labels
+//app etiketi içinde myfirstapp ve mysecondapp değerine sahip olmayan podları listeler.
+
+kubectl get pods -l "app,app notin (firstapp)" --show-labels
+//app'i tarar app içinde firstapp olmayanı getir
+
+kubectl get pods -l "!hi" --show-labels
+//"hi" etiketine sahip olmayan podları listeler.
+
+kubectl get pods -l "app in (firstapp),team notin (frontend)" --show-labels
+//app etiketi içinde firstapp değerine sahip olan ve team etiketi içinde frontend değerine sahip olmayan podları görüntüler.
+
+****************************************************************************************************
+
+
+kubectl get pods --show-labels
+//oluşturulmuş podları ve bu podlara ait labelleri listeler.
+
+
+kubectl label pods mypod app=thirdapp
+//mypod isimli poda app=thirdapp etiket ve değerini ekler.
+
+kubectl label pods mypod app-
+//mypod isimli podun app isimli etiketinin değerini siler.
+
+kubectl label --overwrite pods mypod app=fourthapp
+//mypod isimli podun app isimli etiketinin değerini fourthapp olarak günceller.
+
+
+kubectl label pods --all foo=bar
+//namespaceteki tüm podlara foo=bar etiket ve değeri eklendi.
+
+kubectl get nodes --show-labels
+//tüm node nesnelerini labellarıyla birlikte listeler.
+
+kubectl label nodes minikube hddtype=ssd
+//minikube adlı düğüme hddtype=ssd etiket ve değerini atar
+
+kubectl get nodes --show-labels
+//bu komut bir düğümün üstündeki tüm etiketleri görüntüler
+
+kubectl delete -f pod
+//"pod" adlı bir YAML dosyasında tanımlanan bir Kubernetes pod'unu siler.
+kubectl delete -f podlabel.yaml
+//podlabel.yaml dosyasında tanımlanan objeleri siler.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

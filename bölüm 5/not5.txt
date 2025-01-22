@@ -1,0 +1,31 @@
+nodelar üstünde önceden tanımlanmış birçok label bulunur
+affinity tanımları bir podun nerede schedule edileceğiniz tanımlar.
+
+Taint ve toleration
+NoSchedule, PreferNoSchedule, NoExecute
+
+
+terminal1
+kubectl get nodes
+kubectl describe nodes minikube
+kubectl taint node minikube platform=production:NoSchedule
+kubectl taint node minikube platform-
+kubectl taint node minikube platform=production:NoSchedule
+
+kubectl run test --image:nginx --restart=Never
+kubectl describe pod test
+
+kubectl apply -f podtoleration.yaml
+
+kubectl taint node minikube color=blue:NoExecute
+color=blue anahtarını tolere edemeyen podları bunun üzerinde schedule etme
+aynı zamanda bunların üzerinde çalışan podlar varsa ve bu tainti tolere edemiyorlarsa
+bunları bu podun üzerinden kaldır anlamına gelir.
+
+
+terminal2
+kubectl get pods -w
+
+
+ephemeral volumeler podun yaşam süresi boyunca geçerli
+

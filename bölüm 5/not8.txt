@@ -1,0 +1,37 @@
+
+Storage class
+StorageClass, yöneticilerin sundukları depolama "sınıflarını" tanımlamaları için bir yol sağlar. Farklı sınıflar, hizmet kalitesi düzeylerine veya yedekleme ilkelerine veya cluster yöneticileri tarafından belirlenen isteğe bağlı ilkelere eşlenebilir. Kubernetes, sınıfların neyi temsil ettiği konusunda fikir sahibi değildir. Bu kavram bazen diğer depolama sistemlerinde "profiller" olarak adlandırılır.
+
+
+
+
+terminal1
+kubectl config use-context aks-k8s-test
+kubectl get storageclass
+
+kubectl apply -f sc.yaml
+kubectl get storageclasses
+
+kubectl apply -f pvc.yaml
+
+kubectl get storageclasses.storage.k8s.io
+
+kubectl apply -f deploy.yaml
+
+VOLUMEBINDINGMODE
+WaitForFirstConsumer => bu pvc kullanılana kadar volume oluşturulmayacak
+
+terminal2
+kubectl get pvc -w
+
+terminal3
+kubectl get pv -w
+
+
+*************************************************************************************************************
+
+
+StatefulSet
+1: StatefulSet tarafından oluşturulan her pod, stateful set tanımında belirlediğiniz pvc'e göre oluşturulan bir pv'ye sahip olur. Yani her pod'un kendine ait bir pv'si olur.
+2: StatefulSet altında podlar sırayla oluşturulup sırayla silinir. Örneğin 3 podlu bir stateful set oluşturduğunuz zaman öncelikle pod0 oluşturulur. Bu pod ayağa kalkıp readiness ve liveness checklerinden geçip işlemlerini tamamlamadan bir sonraki pod oluşturulmaz. Ne zaman ki bu pod hazır running durumuna geçer o zaman bir sonraki pod oluşturulur. Aynı şekilde 3. Pod da 2. Pod tamamlanmadan oluşturulmaz. Tam tersi durumda da bu geçerlidir. Siz 3 podlu bir statefulset'i 2. Pod'a indirirseniz Kubernetes random bir pod seçip onu silme yoluna gitmez. En son yaratılan pod hangisi ise ilk olarak o silinir.
+3: StatefulSet tarafından oluşturulan her pod'a statefulsetin_adı-0 1 2 3 şeklinde devam eden sabit bir isim verilir. İsimler random seçilmez ve bu isimler aynı zamanda containerin hostname'i olarak da atandığı için her uygulama bu isimle ulaşılabilir.

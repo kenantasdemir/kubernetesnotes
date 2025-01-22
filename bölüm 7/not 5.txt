@@ -1,0 +1,37 @@
+Service Mesh
+observablity security reliability sağlayan bir altyapı platformu
+service meshi implemente ettiğiniz zaman kendi kodunuzu buna göre çevirmenize gerek yok
+servis bu kodun üzerinde çalışıyor(infrastructure)
+servisler arasındaki trafiği bir proxy üzerinden geçirir.
+
+
+Istio(better),LinkerD
+
+uygulamamızın podunun içine linkerd'nin proxysisini injekte etmeliyiz
+linkerd'nin proxysisini ikinci bir container olarak uygulamamızın yanına kurmalıyız. 
+ana uygulamanın bütün trafiği bu proxy containerın üzerine yönlendiriliyor.
+
+
+https://linkerd.io/2.11/getting-started/
+//bu sitedeki adımları takip et
+
+
+linkerd check --pre
+linkerd check
+
+linkerd viz tap -n emojivoto deployment voting
+//request ve response bilgilerini gösterir.
+linkerd viz top -n emojivoto deployment voting
+//success rate bilgisini gösterir.
+
+
+
+
+
+
+
+
+
+
+
+

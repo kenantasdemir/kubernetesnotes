@@ -1,0 +1,81 @@
+Volume 
+Container dosyaları container varolduğu sürece bir dosya içerisinde tutulur. 
+eğer container silinirse, bu dosyalarda birlikte silinir. 
+her yeni bir container yaratıldığında containera ait dosyalar yeniden yaratılır. (stateless)
+
+containerlar stateles yapılar için uygundur.
+container içine atanan her türlü dosya containera ait ayrı layerda durur
+container ayakta olduğu sürece bu veriye erişilebilir.
+
+Bazı containerlarda bu dosyaların silinmemesi gerekebilir. 
+işte bu durumda ephemeral volume kavramı devreye girer(stateful). 
+
+ephemeral volumeler aynı pod içerisindeki tüm containerlara aynı anda bağlanabilir.
+diğer bir amaç ise aynı pod içerisindeki birden fazla containerın ortak kullanabileceği bir alan yaratmaktır.
+
+ephemereal volumelerde pod silinirse tüm veriler kaybolur. 
+fakat, container silinip tekrar yaratılırsa poda bir şey olmadığı sürece veriler saklanır.
+
+
+kubelet containerı restart eder 
+aslında restart kavramı yok kubelet çalışan containerı siler yenisini oluşturur.
+
+emptyDir
+kubernetes bu podun oluşturulduğu node üstünde boş bir klasör oluşturur.
+daha sonra bu klasör container içerisindeki herhangi bir pathe mount edilebilir.
+
+emptyDir volume ilk olarak bir pod bir nodea atandığında oluşturulur 
+ve bu pod o nodeda çalıştığı sürece var olur. Adından da anlaşılacağı gibi, 
+emptyDir birimi başlangıçta boştur. pod içindeki tüm containerlar,
+emptyDir volumedeki aynı dosyaları okuyabilir ve yazabilir. 
+ancak bu birim her kapsayıcıda aynı veya farklı yollara mount edilebilir. 
+bir pod herhangi bir nedenle bir nodedan silindiğinde, 
+emptyDir içindeki veriler de kalıcı olarak silinir.
+
+hostPath Volume
+podun oluşturulacağı worker node üstündeki spesifik bir klasörü ya da dosyayı belirtirsiniz
+
+Çok nadir durumlarda kullanılır, kullanılırken dikkat edilmelidir.
+emptyDir’da volume klasörü pod içerisinde yaratılırken, 
+hostPath’te volume klasörü worker node içerisinde yaratılır.
+3 farklı tip’te kullanılır:
+Directory –> Worker node üzerinde zaten var olan klasörler için kullanılır.
+DirectoryOrCreate –> Zaten var olan klasörler ya da bu klasör yoksa yaratılması için kullanılır.
+FileOrCreate –> Klasör değil! Tek bir dosya için kullanılır. Yoksa yaratılır.
+
+bir hostPath volume, worker node dosya sisteminden podunuza bir dosya veya dizini bağlayabilme imkanı verir.
+bu çoğu podun ihtiyaç duyabileceği bir şey değildir. ancak bazı uygulamalar için güçlü bir kaçış kapısı sunar.
+
+terminal1
+kubectl apply -f podvolumeemptydir.yaml
+kubectl exec -it emptydir -c frontend -- bash
+kubectl exec emptydir -c frontend -- rm -rf healtcheck
+kubectl exec -it emptydir -c frontend -- bash
+kubectl exec -it emptydir -c sidecar -- sh
+
+terminal2
+kubectl get pods -w
+
+----------------------------------
+
+terminal1
+kubectl apply -f podvolumehostpath.yaml
+kubectl exec -it hostpath -- bash
+
+
+terminal2
+kubectl get pods -w
+
+
+
+
+
+
+
+
+
+
+
+
+
+

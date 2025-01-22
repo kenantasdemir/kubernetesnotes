@@ -1,0 +1,40 @@
+İAM > User > Add User
+Programmatic access ve AWS Management Console access checkbox işaretle
+Next Permissions > Attack existing policies directly > Administrator access
+Next Tags > Next Review > Create User
+
+access key id ve secret access key kopyala
+https://4555468892322.signin.aws.amazon.com/console linkini kopyala
+
+EKS arat
+name gir > create eks cluster
+
+İAM consolunda > create role > EKS > EKS > Next > Next > Review > role name gir > create rol
+
+oluşturulan rolü gir > next > security group seç > next > next > create
+
+amazon cli msi dosyasını indir kur
+
+powershellde awc --version
+
+aws configure 
+access key id gir
+secret access key gir
+region name gir
+output format alanına gelince enterla
+
+
+Compute > Add Node group > name gir 
+
+IAM consolea geç > create role > EC2 > NEXT 
+amazoneksworkernodepolicy
+amazonec2containerregistryreadonly policy seç > next > role name gir > create rol
+
+oluşturulan node iam role seç >next > next 
+
+iam consolea tekrar geç > create key pair > name gir > pem formatında oluştur > create key pair
+ssh key pair kısmına oluşturulan key pairi gir > next > create
+
+powershellde 
+aws eks update-kubeconfig --region bolge --name eks_name
+kubectl get nodes

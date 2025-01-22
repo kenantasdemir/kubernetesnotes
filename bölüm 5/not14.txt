@@ -1,0 +1,27 @@
+terminal1
+minikube delete
+minikube start --driver=hyperv
+kubectl get nodes
+
+minikube addons list
+//tüm addon nesnelerinin listesini görüntüler
+
+minikube addons enable ingress
+
+kubectl get namespaces
+//tüm namepspacleri görüntüler.
+
+kubectl get all -n ingress-ngix
+//ingress-nginx isimli namespace içindeki tüm nesneleri görüntüler.
+
+kubectl apply -f .\deploy.yaml
+kubectl get deployments
+kubectl get svc
+//kubectl get service
+
+kubectl apply -f .
+kubectl get ingress
+kubectl get ingress -w
+
+
+

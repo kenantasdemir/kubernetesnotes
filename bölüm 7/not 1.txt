@@ -1,0 +1,7 @@
+https://github.com/kubernetes/dashboard
+https://k8slens.dev/
+https://github.com/kinvolk/headlamp
+
+minikube addons enable dashboard
+minikube addons enable metrics-server
+minikube dashboard

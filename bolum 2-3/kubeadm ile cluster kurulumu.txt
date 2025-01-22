@@ -1,0 +1,28 @@
+multipass kur
+https://multipass.run/install
+
+
+
+https://github.com/aytitech/k8sfundamentals/tree/main/setup
+//adresteki yönergeleri takip et
+
+multipass shell master
+multipass shell node1
+//ilk yönergeden sonra kurulum başarılı mı değil mi kontrol etmek için bunları gir
+//0 numaralı yönergeyi uyguladıktan sonra bu iki komutu çalıştırın
+
+
+kubectl get pods -A
+//bütün namespaceler altındaki podları görüntüler.
+
+bir cluster kurduğumuzda networking altyapısını yönetecek bir plugin kurmamız gerekir
+
+
+labs.play-with-k8s.com
+//bu adrese giderek sisteminize kubernete yüklemeden kubernete komutları çalıştırabilirsiniz.
+
+
+kubectl run deneme --image=nginx --restart=Never
+//nginx container imajından deneme isimli pod oluşturuldu.
+//--restart=Never" seçeneği, pod'un bir kez çalıştırılması ve sonlandırılması gerektiğini belirtir, 
+//yani bu pod, bir kez çalıştırıldıktan sonra kendiliğinden sona erer.

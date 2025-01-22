@@ -1,0 +1,56 @@
+kuberneteste kullanıcılar varsayılan olarak 0 yetkisiyle gelir. yapabilecekleri hiçbir şey yoktur.
+
+
+
+RBAC objeleri
+Rol tabanlı erişim denetimi (RBAC), kuruluşunuzdaki bireysel kullanıcıların rollerine dayalı olarak bilgisayar veya ağ kaynaklarına erişimi düzenleme yöntemidir.
+
+RBAC yetkilendirmesi, yetkilendirme kararlarını yönlendirmek için
+rbac.authorization.k8s.io API grubunu kullanır ve Kubernetes API aracılığıyla ilkeleri dinamik olarak yapılandırmanıza olanak tanır.
+
+
+kubectl config set-context mycustomcontext --cluster=<cluster-name> --user=kenant42 --namespace=specialnamespace
+
+
+kubectl config current-context
+kubectl config use-context minikube
+
+kubectl apply -f . 
+//aynı dizinde bulunan tüm yaml dosyalarını kube-api servera gönderir.
+
+kubectl get roles
+//cluster içindeki rolleri listeler.
+
+kubectl get rolebindings.rbac.authorization.k8s.io
+
+kubectl get clusterrole
+//clusterrole türündeki nesneleri görüntüler.
+
+cluster rolleri, cluster rolebinding ile değil de rolebinding ile birlikte kullanıp sadece
+namespace seviyesinde de atama yapabiliriz.
+
+kubectl get clusterrolebindings.rbac.authorization.k8s.io
+
+kubectl config use-context ozgurozturk-context
+kubectl get pods
+kubectl get svc
+//servis listeleme hakkı yok
+
+kubectl get pods -n kube-system
+//izin yok
+
+kubectl get secrets -A
+
+
+
+
+
+
+
+
+
+
+
+
+
+

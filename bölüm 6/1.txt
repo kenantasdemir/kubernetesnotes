@@ -1,0 +1,54 @@
+minikube start -- node=5
+//5 nodlu bir cluster oluşturuldu
+
+kubectl create namespace test
+kubectl create namespace production
+
+clusterrole cluster seviyesinde yetki vermek için kullanılır.
+fakat namespace seviyesinde yetkilendirmeler için de kullanılailir.
+
+*********************************************************************************************
+
+$ nodedrain=$(kubectl get no -o jsonpath="{.items[3].metadata.name}")
+
+$ kubectl drain $nodedrain --ignore-daemonsets --delete-local-data
+`kubectl drain` komutu, bir Kubernetes node'undan tüm Pod'ları kaldırmak için kullanılır. 
+Bu durum, örneğin bir node'un planlanmış bir bakım işlemi için kullanıma kapatılması gibi durumlarda gerekebilir.
+
+Bu komutu kullanırken, `--ignore-daemonsets` bayrağı daemonset'ler tarafından yönetilen Pod'ların silinmemesini sağlar. 
+`--delete-local-data` bayrağı, Pod'ların silinmesi sırasında node üzerindeki tüm verilerin silinmesini de sağlar.
+
+Örneğin, `nodedrain` adlı bir nodunun tüm Pod'ları kaldırılırken kullanımı şu şekildedir:
+
+```
+kubectl drain nodedrain --ignore-daemonsets --delete-local-data
+```
+
+
+$ kubectl cordon $nodedrain
+
+kubectl cordon komutu, belirtilen bir düğümdeki tüm yeni podların planlanmasını durdurur. 
+Yani, düğümün etrafında çalışan diğer podlar etkilenmez, ancak yeni podların o düğüme planlanmasını engeller.
+
+***********************************************************************************************************
+
+kubectl get no 
+Bu komut, Kubernetes kümesinde bulunan tüm düğümleri (nodes) listeler. 
+
+
+kubectl expose deployment k8s-deployment --type=LoadBalancer -n production
+
+//deployment'i "loadbalancer" tipi bir servisle dış dünyadan erişilebilir hale getirin.
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+Singleton pod, yalnızca bir örneği çalıştırılan bir Kubernetes pod'udur. Yani, bir Singleton pod yalnızca bir pod örneğinden oluşur ve bu pod'un birden fazla çoğaltması yoktur.
+
+Singleton pod'lar, kritik sistem bileşenlerinin çalıştırılması veya yalnızca bir örneğin çalıştırılmasının gerektiği özel durumlar gibi belirli durumlarda kullanılabilir. Örneğin, bir yedekleme işlemi sırasında yalnızca bir pod'un çalıştırılması gerekebilir. Bir Singleton pod, bir Deployment, ReplicaSet veya StatefulSet aracılığıyla oluşturulabilir.
+
+Kubernetes, Singleton pod'ların tek örneğinin herhangi bir sebeple durması durumunda otomatik olarak yeniden başlatılmasını sağlayabilir. Ayrıca, bir Singleton pod'un yedeklenmesi ve kurtarılması için tasarlanmış mekanizmalar da mevcuttur.
+
+Singleton pod'lar, Kubernetes'te yaygın bir kullanıma sahip değildir, ancak belirli senaryolarda yararlı olabilirler. Bu nedenle, kullanımları ihtiyaca bağlı olarak farklılık gösterebilir ve doğru senaryoda doğru şekilde kullanıldığında avantajlı olabilirler.
+
+İşlemler manuel ve zahmetli
+singleton podların fail durumunu kontrol eden bir mekanizma yok.
+yeni bir pod eklemek ya da çıkarmak istenilirse tüm süreci siz yönetmelisiniz.
+
+
+terminal1
+kubectl apply -f statefulset.yaml
+kubectl exec cassandra-0 -- nodetool status
+kubectl scale statefulset cassandra --replicas=5
+kubectl delete pod cassandra-2
+kubectl scale statefulset cassandra --replicas=3
+
+kubectl get svc
+
+kubectl run -it test --image=busybox -- sh
+ping cassandra
+ping cassandra-1.cassandra
+
+
+terminal2
+kubectl get pods -w
+
+
+terminal3
+kubectl get pvc -w
+
+
+statefulset podları sırasıyla oluşturur.
+1.pod oluşturulmadan 2.oluşturulmaz
+her pod oluşturulmadan önce bir pvc oluşturulur ve bu pvc pv'ye bağlanır.
+

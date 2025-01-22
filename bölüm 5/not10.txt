@@ -1,0 +1,34 @@
+
+Job
+Bir Job objesi, bir veya daha fazla pod oluşturur ve belirli bir sayıda pod başarıyla sonlandırılana kadar pod yürütmeyi yeniden denemeye devam eder. Job
+belirtilen sayıda pod'un başarıyla tamamlanma durumunu izler. Belirtilen sayıda başarılı tamamlamaya ulaşıldığında, Job (yani görev) tamamlanır. Bir Job'un silinmesi, oluşturduğu podları temizleyecektir.
+
+
+
+terminal1
+kubectl apply -f job.yaml
+kubectl logs pi-4jfd6
+kubectl delete jobs.batch pi
+
+terminal2
+kubectl get pods -w
+
+terminal3
+kubectl get jobs
+
+
+**************************************************************************************
+
+
+	CronJOB
+
+Bir cronjob nesnesi, bir crontab dosyasının bir satırı gibidir.
+belirli bir zamanlamaya göre cron formatında yazılmış bir jobu periyodik olarak çalıştırır.
+
+terminal1
+kubectl apply -f cronjob.yaml
+kubectl get cronjobs.batch
+kubectl delete cronjobs.batch hello
+
+terminal2
+kubectl get pods -w

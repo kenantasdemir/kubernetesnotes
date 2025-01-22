@@ -1,0 +1,33 @@
+kubectl get all -A
+kubectl describe pods rollreployment-65566565
+kubectl get events -A
+kubectl top pod
+//pod istatistikleri
+
+kubectl logs rollreployment-65566565
+
+artifacthub
+prometheus stack bir metrics sunucusudur.
+metrikleri toplanması ve store edilmesi ile ilgilidir.
+Grafana da bunun görselleştirilmesi için vardır.
+
+grafana.com/grafana/dashboards/?search=prometheus
+dashboardun idsini kopyala + simgesinin altında import kısmında idyi yapıştır
+prometheus data sourceunu gir ve importa bas
+
+https://github.com/aytitech/k8sfundamentals/tree/main/monitoring
+kubectl get pods -n monitoring
+
+*******************************************************************************
+logtash
+Elasticksearch Fluentd Kibana stack
+
+Elastiksearch logların toplandığı ve kaydedildiği yer
+kibana bu logların görselleştirilmesini sağlar.
+
+fluentd logları toplayacak ve elastiksearche gönderecek
+
+https://github.com/aytitech/k8sfundamentals/tree/main/monitoring
+
+
+
