@@ -45,7 +45,7 @@ Namespaceler cluster kaynaklarını birden çok kullanıcı arasında bölmenin 
 Kubernetes'te, default olarak aynı cluster içerisindeki pod'lar arasında herhangi bir ağ izolasyonu yoktur. 
 Bu, bir pod'un içindeki konteynerlerin başka bir pod'daki konteynerlere erişebileceği anlamına gelir.
 
-kubectl get pods --namespace kube-system
+<mark>kubectl get pods --namespace kube-system</mark>
 //kube-system isimli namespaceteki podları listeler.
 
 kubectl get pods -n kube-system
