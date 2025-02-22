@@ -1,10 +1,24 @@
-Singleton pod, yalnızca bir örneği çalıştırılan bir Kubernetes pod'udur. Yani, bir Singleton pod yalnızca bir pod örneğinden oluşur ve bu pod'un birden fazla çoğaltması yoktur.
+Singleton pod, yalnızca bir örneği çalıştırılan bir Kubernetes pod'udur. 
+Yani, bir Singleton pod yalnızca bir pod örneğinden oluşur ve bu pod'un 
+birden fazla çoğaltması yoktur.
 
-Singleton pod'lar, kritik sistem bileşenlerinin çalıştırılması veya yalnızca bir örneğin çalıştırılmasının gerektiği özel durumlar gibi belirli durumlarda kullanılabilir. Örneğin, bir yedekleme işlemi sırasında yalnızca bir pod'un çalıştırılması gerekebilir. Bir Singleton pod, bir Deployment, ReplicaSet veya StatefulSet aracılığıyla oluşturulabilir.
+Singleton pod'lar, kritik sistem bileşenlerinin çalıştırılması veya yalnızca
+bir örneğin çalıştırılmasının gerektiği özel durumlar gibi belirli durumlarda
+kullanılabilir. Örneğin, bir yedekleme işlemi sırasında yalnızca bir pod'un 
+çalıştırılması gerekebilir. Bir Singleton pod, bir Deployment, ReplicaSet 
+veya StatefulSet aracılığıyla oluşturulabilir.
 
-Kubernetes, Singleton pod'ların tek örneğinin herhangi bir sebeple durması durumunda otomatik olarak yeniden başlatılmasını sağlayabilir. Ayrıca, bir Singleton pod'un yedeklenmesi ve kurtarılması için tasarlanmış mekanizmalar da mevcuttur.
 
-Singleton pod'lar, Kubernetes'te yaygın bir kullanıma sahip değildir, ancak belirli senaryolarda yararlı olabilirler. Bu nedenle, kullanımları ihtiyaca bağlı olarak farklılık gösterebilir ve doğru senaryoda doğru şekilde kullanıldığında avantajlı olabilirler.
+Kubernetes, Singleton pod'ların tek örneğinin herhangi bir sebeple durması
+durumunda otomatik olarak yeniden başlatılmasını sağlayabilir. Ayrıca, bir 
+Singleton pod'un yedeklenmesi ve kurtarılması için tasarlanmış mekanizmalar 
+da mevcuttur.
+
+Singleton pod'lar, Kubernetes'te yaygın bir kullanıma sahip değildir, ancak 
+belirli senaryolarda yararlı olabilirler. Bu nedenle, kullanımları ihtiyaca 
+bağlı olarak farklılık gösterebilir ve doğru senaryoda doğru şekilde 
+kullanıldığında avantajlı olabilirler.
+
 
 İşlemler manuel ve zahmetli
 singleton podların fail durumunu kontrol eden bir mekanizma yok.
