@@ -4,11 +4,20 @@ bunu dışarıda halledebileceğiniz seçenekler olarak sunar.
 
 Kubernetes authetication
 
-Kubernetes, kimlik doğrulama eklentileri aracılığıyla API isteklerinin kimliğini doğrulamak için istemci sertifikaları, taşıyıcı belirteçleri, bir kimlik doğrulama proxy'si veya HTTP temel kimlik doğrulaması kullanır.
+Kubernetes, kimlik doğrulama eklentileri aracılığıyla API isteklerinin 
+kimliğini doğrulamak için istemci sertifikaları, taşıyıcı belirteçleri, bir
+kimlik doğrulama proxy'si veya HTTP temel kimlik doğrulaması kullanır.
 
-Api'de bir kullanıcı objesi bulunmamasına rağmen, cluster'in certificate authority'si tarafından imzalanmış geçerli bir sertifika sunan herhangi bir kullanici (CA) kimliği doğrulanmış olarak kabul edilir. Bu yapılandırmada Kubernetes, sertifikanın konu' kısmındaki ortak ad alanından kullanıcı adını belirler (ör. "/CN=bob").
 
-Oradan, rol tabanlı erişim denetimi (RBAC) alt sistemi, kullanıcının bir kaynak üzerinde belirli bir işlemi gerçekleştirme yetkisine sahip olup olmadığını belirler.
+Api'de bir kullanıcı objesi bulunmamasına rağmen, cluster'in certificate 
+authority'si tarafından imzalanmış geçerli bir sertifika sunan herhangi bir
+kullanici (CA) kimliği doğrulanmış olarak kabul edilir. Bu yapılandırmada 
+Kubernetes, sertifikanın konu' kısmındaki ortak ad alanından kullanıcı adını
+belirler (ör. "/CN=bob").
+
+Oradan, rol tabanlı erişim denetimi (RBAC) alt sistemi, kullanıcının bir 
+kaynak üzerinde belirli bir işlemi gerçekleştirme yetkisine sahip olup 
+olmadığını belirler.
 
 X509 Client Certs
 Static Token File
