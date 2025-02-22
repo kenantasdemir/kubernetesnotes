@@ -10,6 +10,7 @@ terminal1
 kubectl get nodes
 kubectl apply -f daemonset.yaml
 minikube node add
+minikube node add --worker
 //ikinci node ekler
 
 kubectl get nodes
