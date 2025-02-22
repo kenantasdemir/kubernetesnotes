@@ -49,7 +49,9 @@ Böylelikle Pod yaratılırken “Bu dosyanın ismi değişecek.” demiş oluyo
 
 
 
-kubectl delete secrets mysecret2
+kubectl delete secrets mysecret1 --now=true
+
+kubectl delete secrets mysecret2 --grade-period=1
 //mysecret2 adlı secret nesnesini siler.
 
 terminal1
