@@ -1,7 +1,10 @@
 
 Job
-Bir Job objesi, bir veya daha fazla pod oluşturur ve belirli bir sayıda pod başarıyla sonlandırılana kadar pod yürütmeyi yeniden denemeye devam eder. Job
-belirtilen sayıda pod'un başarıyla tamamlanma durumunu izler. Belirtilen sayıda başarılı tamamlamaya ulaşıldığında, Job (yani görev) tamamlanır. Bir Job'un silinmesi, oluşturduğu podları temizleyecektir.
+Bir Job objesi, bir veya daha fazla pod oluşturur ve 
+belirli bir sayıda pod başarıyla sonlandırılana kadar pod yürütmeyi yeniden denemeye devam eder.
+Job belirtilen sayıda pod'un başarıyla tamamlanma durumunu izler. 
+Belirtilen sayıda başarılı tamamlamaya ulaşıldığında, Job (yani görev) tamamlanır. 
+Bir Job'un silinmesi, oluşturduğu podları temizleyecektir.
 
 
 
