@@ -4,7 +4,7 @@ podunuzun hangi node üstünde schedule edilmeye uygun olduğunu kısıtlamanız
 
 Pod affinity
 pod affinity, podunuzun hangi node üstünde oluşturulmaya uygun olduğunu nodelardaki 
-etiketlere göre değil halihazırda nodeda çalışmakta olan podlardaki etiketlere göre sınırlamanıza olanak tanır.
+etiketlere göre değil halihazırda nodeda çalışmakta olan podlardaki etiketlere göre sınırlamanıza olanak tanır. benzer podları bir arada çalıştırır.
 
 
 node selector sayesinde bir podu istediğimiz bir node üstünde oluşturabiliriz
