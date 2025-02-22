@@ -1,0 +1,41 @@
+DaemonSet
+tüm veya bazı nodeların bir podun bir kopyaasını çalıştırmasını sağlar.
+clustera yeni node eklendikçe, onlara podlar da eklenir.
+clusterdan node kaldırıldığında bu podlar da kaldırılır.
+bir daemonsetin silinmesi oluşturduğu podları da temizleyecektir.
+
+
+
+terminal1
+kubectl get nodes
+kubectl apply -f daemonset.yaml
+minikube node add
+minikube node add --worker
+//ikinci node ekler
+
+kubectl get nodes
+kubectl get pods
+
+
+kubectl delete pod podismi
+
+
+
+terminal2
+kubectl get daemonset -w
+
+
+
+
+*******************************************************************************************************
+
+
+Container Storage Interface (CSI)
+
+CSI, isteğe bağlı blok ve dosya depolama depolama sistemlerini Kubernetes gibi 
+Container Orchestration Systems (CO'ler). üzerindeki containerized iş yüklerine 
+maruz bırakmak için bir standart olarak geliştirilmiştir. Container Storage Interface'in
+benimsenmesiyle Kubernetes volume katmanı gerçekten genişletilebilir hale geldi.
+Üçüncü taraf depolama sağlayıcıları, CSI kullanarak, 
+çekirdek Kubernetes koduna dokunmak zorunda kalmadan Kubernetes'te yeni depolama 
+sistemlerini açığa çıkaran eklentiler yazabilme imkanına kavuştu.
