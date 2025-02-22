@@ -1,8 +1,62 @@
 
 Storage class
-StorageClass, yöneticilerin sundukları depolama "sınıflarını" tanımlamaları için bir yol sağlar. Farklı sınıflar, hizmet kalitesi düzeylerine veya yedekleme ilkelerine veya cluster yöneticileri tarafından belirlenen isteğe bağlı ilkelere eşlenebilir. Kubernetes, sınıfların neyi temsil ettiği konusunda fikir sahibi değildir. Bu kavram bazen diğer depolama sistemlerinde "profiller" olarak adlandırılır.
+StorageClass, yöneticilerin sundukları depolama "sınıflarını" tanımlamaları 
+için bir yol sağlar. Farklı sınıflar, hizmet kalitesi düzeylerine veya 
+yedekleme ilkelerine veya cluster yöneticileri tarafından belirlenen isteğe 
+bağlı ilkelere eşlenebilir. Kubernetes, sınıfların neyi temsil ettiği 
+konusunda fikir sahibi değildir. Bu kavram bazen diğer depolama sistemlerinde 
+"profiller" olarak adlandırılır.
 
 
+StorageClass, Kubernetes'te persistent storage (kalıcı depolama) 
+kaynaklarının nasıl sağlanacağını ve yönetileceğini tanımlayan bir kaynak 
+türüdür. Bu nesne, Kubernetes cluster'ındaki depolama sistemlerine nasıl 
+erişileceğini, hangi depolama türlerinin kullanılacağını ve bu depolama 
+kaynaklarının nasıl yönetileceğini belirler.
+
+
+StorageClass'ın Temel Özellikleri
+Depolama Yönetimini Otomatikleştirir: StorageClass, bir PersistentVolumeClaim
+(PVC) oluşturulurken hangi depolama sağlayıcısının ve parametrelerinin 
+kullanılacağını belirtir. Bu sayede, Kubernetes bir PVC oluşturduğunda doğru 
+türde depolama kaynağını otomatik olarak oluşturabilir.
+
+
+Dinamik Depolama Kaynakları: Kubernetes'teki Persistent Volumes (PV), 
+genellikle manuel olarak oluşturulabilir. Ancak StorageClass, dinamik olarak
+PVC talep edildiğinde PV oluşturulmasını sağlar. Böylece kullanıcılar 
+depolama talep ettiklerinde, Kubernetes uygun depolama birimini otomatik 
+olarak sağlayabilir.
+
+
+Çeşitli Depolama Çözümleri Desteği: Farklı depolama sağlayıcıları için 
+parametreler ve ayarlar tanımlanabilir. Örneğin, bir StorageClass, bir bulut 
+sağlayıcısının (AWS, Google Cloud, Azure vb.) belirli bir disk türünü 
+kullanacak şekilde yapılandırılabilir. Ayrıca yerel depolama veya NFS gibi 
+farklı depolama çözümleri de desteklenebilir.
+
+
+Performans ve Özellikler: StorageClass ile depolama birimlerinin özellikleri 
+belirlenebilir. Örneğin, SSD veya HDD kullanımı, depolama boyutu, replikasyon 
+stratejileri gibi özellikler ayarlanabilir.
+
+
+StorageClass'ın Yapısı ve Parametreler
+Bir StorageClass nesnesi, çeşitli özelliklere sahip olabilir. Bu özellikler şunlardır:
+
+Provisioner: Hangi depolama sağlayıcısının kullanılacağını belirler. Bu, 
+genellikle bir bulut sağlayıcısının veya bir depolama sisteminin driver'ıdır.
+Örneğin, AWS için kubernetes.io/aws-ebs, Google Cloud için kubernetes.io/gce-
+pd olabilir.
+Parameters: Depolama sağlayıcısının özelliklerini belirten parametrelerdir. 
+Bu parametreler, örneğin disk türü (ssd, hdd), şifreleme özellikleri veya 
+diğer sağlayıcıya özgü ayarları içerebilir.
+
+ReclaimPolicy: PVC silindiğinde, PV'nin ne olacağını belirler. İki ana değer vardır:
+Retain: PVC silindiğinde, ilgili PV korunur.
+Delete: PVC silindiğinde, ilgili PV de silinir.
+VolumeBindingMode: PVC ile PV'nin nasıl ilişkilendirileceğini belirtir. Bu değer Immediate veya WaitForFirstConsumer olabilir. WaitForFirstConsumer, pod talep edilene kadar depolama kaynağının oluşturulmasını erteleme seçeneğidir.
+AllowVolumeExpansion: Bu seçenek, PV'nin boyutunun genişletilip genişletilemeyeceğini belirler.
 
 
 terminal1
