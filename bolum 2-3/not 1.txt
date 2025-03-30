@@ -16,27 +16,6 @@ minikube stop
 //minikube nesnesini durdurur.(silmez)
 
 
-
-azurea giriş yap
-resource groups > create resource group > isim gir > review + create > create
-resource groups altında oluşturulan resource groupa tıkla > create > Kubernetes service create
-Node count = worker node
-Node size = B2ms
-Review + create 
-
-
-azure cli yükle
-powershellde "az login" komutu gir
-az group list --> shows resource groups
-
-az group list -o table
-
-
---------------------------------------------------------------------------------------------------
-
-az aks get-credentials --name aks-k8s-test --resource-group rg-k8s-test
-			     cluster name	         resource group name
-
 kubectl get nodes
 
 
