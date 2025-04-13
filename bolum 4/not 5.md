@@ -76,7 +76,7 @@ kubectl exec -it namespacedpod -n development -- /bin/sh
 
 Bir deployment'da istenen durumu tanımlarsınız ve deployment controller, mevcut durumu istenilen durumla karşılaştırıp gerekli aksiyonları alır.
 
-Her deployment’ta en az bir tane selector tanımı olmalıdır.
+<b><mark>Her deployment’ta en az bir tane selector tanımı olmalıdır.</mark></b><br>
 Birden fazla deployment yaratacaksanız, farklı label’lar kullanmak zorundasınız. 
 Yoksa deploymentlar hangi podların kendine ait olduğunu karıştırabilir. 
 Ayrıca, aynı labelları kullanan singleton bir pod’da yaratmak sakıncalıdır!
