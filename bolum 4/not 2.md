@@ -10,15 +10,15 @@ ve NAT yani network address translation olmadan haberleşebiliriler.
 
 ---------------------------------------------------------------------------------------------------
 
-kubectl run firstpod --image=nginx --restart=Never
-//nginx imajıdan bir pod yaratıldı. 
---restart=Never ifadesiyle bu pod durduğunda tekrar çalışmaması gerektiği belirtildi.
+<b><mark>kubectl run firstpod --image=nginx --restart=Never</mark></b><br>
+//nginx imajıdan bir pod yaratıldı. <br>
+--restart=Never ifadesiyle bu pod durduğunda tekrar çalışmaması gerektiği belirtildi.<br>
 
 kubectl get pods -o wide
 //oluşturulmuş podları geniş formatta listeler.
 
-kubectl explain serviceaccount
-//serviceaccount hakkında detaylı bilgi görüntüler.
+<b><mark>kubectl explain serviceaccount</mark></b><br>
+//serviceaccount hakkında detaylı bilgi görüntüler.<br>
 
 kubectl describe pods firstpod
 //firstpod isimli pod hakkında detaylı bilgi listeler.
@@ -56,7 +56,7 @@ kubectl apply -f pod1.yaml
 
 kubectl describe pods firstpod
 
-kubectl run mysecondpod --image=nginx --port=80 --labels="hi=Merhaba,world=Dunya" --restart=Never
+<b><mark>kubectl run mysecondpod --image=nginx --port=80 --labels="hi=Merhaba,world=Dunya" --restart=Never</mark></b><br>
 //mysecondpod isimli yeni bir pod oluşturuldu. bu pod nginx imajını kullanacak. 80 portundan çalışacak restart policy ise Never olarak atandı.
 //hi:Merhaba ve world:Dunya olmak üzere iki adet label eklendi.
 
@@ -64,7 +64,7 @@ kubectl edit pods mysecondpod
 //daha önce oluşturulan mysecondpod isimi pod öğesinin konfigurasynlarını terminalde görüntüler
 //burada poda ait konfigurasyonları değiştirilebilir.
 
-kubectl get pods --show-labels
+<b><mark>kubectl get pods --show-labels</mark></b><br>
 
 --------------------------------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ eğer burada yeni oluşturulmuş herhangi bir node ataması yapılmamış bir po
 algoritması ve seçme kriterlerine göre podun çalışmasının en uygun olacağı nodeu seçer ve 
 veritabanındaki pod objesine node bilgisini ekler. bu noktadan itibaren pod CREATING aşamasındadır.
 
-cluster içerisinde bulunan tüm nodelarda kubelet adında bir servis bulunur.
+<b><mark>cluster içerisinde bulunan tüm nodelarda kubelet adında bir servis bulunur.</mark></b><br>
 bu servis etcd veritabanını gözler. bulunduğunu nodea atanmış podları tespit eder
 ilk olarak pod tanımında oluşturulması istenen containerlara bakar ve bu containerların
 oluşturulacağı imageları sisteme indirir. eğer bir şekilde image indirilmezse pod öncelikle
