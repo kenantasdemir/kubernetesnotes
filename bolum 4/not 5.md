@@ -15,7 +15,7 @@ Değer alanında bu kurallar geçerli değildir. Alfanümerik olmayan karakter d
 kubectl apply -f podannotation.yaml
 kubectl describe pod annotationpod
 
-kubectl annotate pods myfirstpod foo=bar
+<b><mark>kubectl annotate pods myfirstpod foo=bar</mark></b><br>
 //myfirstpod isimli pod nesnesine foo=bar anotasyonu eklendi.
 
 kubectl annotate pods mysecondpod foo=
@@ -28,10 +28,10 @@ kubectl annotate pods mysecondpod foo-
 
 -------------------------------------------------------------------------------------------------
 
-kube-system isimli namespace kubernetes tarafından oluşturulan nesnelerin tutulduğu namespacetir.
-kube-public kimliği doğrulanmamış kullanıcılar dahil tüm kullanıcılar tarafından erişilmesine
-ihtiyaç duyulan objelerin oluşturulacağı yerdir.
-kube-node-lease nodehardbit işlemleri için gereken özel bir namespacetir.
+<b><mark>kube-system isimli namespace kubernetes tarafından oluşturulan nesnelerin tutulduğu namespacetir.</mark></b><br>
+<b><mark>kube-public kimliği doğrulanmamış kullanıcılar dahil tüm kullanıcılar tarafından erişilmesine
+ihtiyaç duyulan objelerin oluşturulacağı yerdir.</mark></b><br>
+<b><mark>kube-node-lease nodehardbit işlemleri için gereken özel bir namespacetir.</mark></b><br>
 
 -------------------------------------------------------------------------------------------------
 				
@@ -55,10 +55,10 @@ kubectl get pods --all-namespaces
 //bütün namespaceler altında bulunan pod objelerini listeler.
 
 
-kubectl create namespace app1
+<b><mark>kubectl create namespace app1</mark></b><br>
 //app1 isimli namespace oluşturuldu.
 
-kubectl config set-context --current --namespace=app1
+<b><mark>kubectl config set-context --current --namespace=app1</mark></b><br>
 //varsayılan namespace değiştirildi.
 
 kubectl get namespaces
@@ -66,10 +66,10 @@ kubectl get namespaces
 
 kubectl exec -it namespacedpod -n development -- /bin/sh
 
-kubectl config set-context --current --namespace=development
+<b><mark>kubectl config set-context --current --namespace=development</mark></b><br>
 //development isimli namespacei aktif olarak ayarlar.
 
-kubectl delete namespaces development
+<b><mark>kubectl delete namespaces development</mark></b><br>
 //development isimli namespacesi siler.
 
 -------------------------------------------------------------------------------------------------
@@ -107,7 +107,7 @@ kubectl edit pods myfirstpod
 -----------------------------------
 
 terminal1
-kubectl set image deployments/firstdeployment myCon:httpd
+<b><mark>kubectl set image deployments/firstdeployment myCon:httpd</mark><b></br>
 //myCon isimli containerdaki imajı httpd olarak günceller.
 
 terminal2
