@@ -19,42 +19,41 @@ kubectl apply -f mypodlabel.yaml
 kubectl get pods
 //oluşturulmuş podları listeler.
 
-kubectl get pods -l "hi" --show-labels
+<b><mark>kubectl get pods -l "hi" --show-labels</mark></b><br>
 //hi adlı bir labela sahip olan tüm podları labellarıyla birlikte görüntüler.s
 
-kubectl get pods -l "hi=Merhaba" --show-labels
+<b><mark>kubectl get pods -l "hi=Merhaba" --show-labels</mark></b><br>
 //hi adlı etiketi olan ve etiket değeri Merhaba olan podları labellarıyla birlikte listeler.
 
-kubectl get pods -l "hi=Merhaba,world=Dunya" --show-labels
+<b><mark>kubectl get pods -l "hi=Merhaba,world=Dunya" --show-labels</mark></b><br>
 //birden fazla etiketi olan podları etiketleriyle birlikte görüntüler. etiketler virgülle ayrılır.
 
-kubectl get pods -l "hi=Merhaba,world!=Dunya" --show-labels
+<b><mark>kubectl get pods -l "hi=Merhaba,world!=Dunya" --show-labels</mark></b><br>
 // hi etiket değeri Merhaba olan ve world etiket değeri Dunya olmayan podları listeler.s
 
-kubectl get pods -l "hi,world=Dunya" --show-labels
+<b><mark>kubectl get pods -l "hi,world=Dunya" --show-labels</mark></b><br>
 // hi ve world etiketleri olan podları listeler.
 //bu podlardan sadece world etiket değeri World olan podları listeler.s
 
-kubectl get pods -l "hi=Merhaba,hi=Hola" --show-labels
+<b><mark>kubectl get pods -l "hi=Merhaba,hi=Hola" --show-labels</mark></b><br>
 //hi etiket değeri Merhaba ya da Hola olan podları listeler.
 
-//set base
-kubectl get pods -l "app in (myfirstapp)" --show-labels
+<b><mark>kubectl get pods -l "app in (myfirstapp)" --show-labels</mark></b><br>
 //app etiketi içinde myfirstapp değerine sahip olan podları listeler.
 
-kubectl get pods -l "app in (myfirstapp,mysecondapp)" --show-labels
+<b><mark>kubectl get pods -l "app in (myfirstapp,mysecondapp)" --show-labels</mark></b><br>
 //app etiketi içinde myfirstapp ve mysecondapp değerine sahip olan podları listeler.
 
-kubectl get pods -l "app notin (firstapp,secondapp)" --show-labels
+<b><mark>kubectl get pods -l "app notin (firstapp,secondapp)" --show-labels</mark></b><br>
 //app etiketi içinde myfirstapp ve mysecondapp değerine sahip olmayan podları listeler.
 
-kubectl get pods -l "app,app notin (firstapp)" --show-labels
+<b><mark>kubectl get pods -l "app,app notin (firstapp)" --show-labels</mark></b><br>
 //app'i tarar app içinde firstapp olmayanı getir
 
-kubectl get pods -l "!hi" --show-labels
+<b><mark>kubectl get pods -l "!hi" --show-labels</mark></b><br>
 //"hi" etiketine sahip olmayan podları listeler.
 
-kubectl get pods -l "app in (firstapp),team notin (frontend)" --show-labels
+<b><mark>kubectl get pods -l "app in (firstapp),team notin (frontend)" --show-labels</mark></b><br>
 //app etiketi içinde firstapp değerine sahip olan ve team etiketi içinde frontend değerine sahip olmayan podları görüntüler.
 
 ****************************************************************************************************
@@ -63,18 +62,16 @@ kubectl get pods -l "app in (firstapp),team notin (frontend)" --show-labels
 kubectl get pods --show-labels
 //oluşturulmuş podları ve bu podlara ait labelleri listeler.
 
-
-kubectl label pods mypod app=thirdapp
+<b><mark>kubectl label pods mypod app=thirdapp</mark></b><br>
 //mypod isimli poda app=thirdapp etiket ve değerini ekler.
 
-kubectl label pods mypod app-
+<b><mark>kubectl label pods mypod app-</mark></b><br>
 //mypod isimli podun app isimli etiketinin değerini siler.
 
-kubectl label --overwrite pods mypod app=fourthapp
+<b><mark>kubectl label --overwrite pods mypod app=fourthapp</mark></b><br>
 //mypod isimli podun app isimli etiketinin değerini fourthapp olarak günceller.
 
-
-kubectl label pods --all foo=bar
+<b><mark>kubectl label pods --all foo=bar</mark></b><br>
 //namespaceteki tüm podlara foo=bar etiket ve değeri eklendi.
 
 kubectl get nodes --show-labels
