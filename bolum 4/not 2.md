@@ -33,10 +33,10 @@ kubectl describe deployments denemedeployment
 kubectl logs firstpod
 //firstpod isimli poda ait logları görüntüler.
 
-kubectl logs -f firstpod
-//anlık olarak eklenen logları listeler
+<b><mark>kubectl logs -f firstpod</mark></b><br>
+//anlık olarak eklenen logları listeler<br>
 
-kubectl exec firstpod -- hostname
+<b><mark>kubectl exec firstpod -- hostname</mark></b><br>
 //firstpod isimli pod üzerinde hostname komutu çalıştırıldı
 
 kubectl exec firstpod -- ls /
@@ -60,7 +60,7 @@ kubectl describe pods firstpod
 //mysecondpod isimli yeni bir pod oluşturuldu. bu pod nginx imajını kullanacak. 80 portundan çalışacak restart policy ise Never olarak atandı.
 //hi:Merhaba ve world:Dunya olmak üzere iki adet label eklendi.
 
-kubectl edit pods mysecondpod
+<b><mark>kubectl edit pods mysecondpod</mark></b><br>
 //daha önce oluşturulan mysecondpod isimi pod öğesinin konfigurasynlarını terminalde görüntüler
 //burada poda ait konfigurasyonları değiştirilebilir.
 
