@@ -23,11 +23,11 @@ kubectl get pods -o wide
 kubectl describe pods firstpod
 //firstpod isimli pod hakkında detaylı bilgi listeler.
 
-Pod'u silmek: kubectl delete pod <pod-adı>
-Deployment pod sayısını sıfırlamak: kubectl scale deployment <deployment-adı> --replicas=0
-Deployment'ı yeniden başlatmak: kubectl rollout restart deployment <deployment-adı>
+Pod'u silmek: <b><mark>kubectl delete pod <pod-adı></mark></b><br>
+Deployment pod sayısını sıfırlamak: <b><mark>kubectl scale deployment <deployment-adı> --replicas=0</mark></b><br>
+Deployment'ı yeniden başlatmak: <b><mark>kubectl rollout restart deployment <deployment-adı></mark></b><br>
 
-kubectl describe deployments denemedeployment
+<b><mark>kubectl describe deployments denemedeployment</mark></b><br>
 //denemedeployment nesnesi hakkında detaylı bilgi görüntüler.
 
 kubectl logs firstpod
