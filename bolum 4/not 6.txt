@@ -11,15 +11,15 @@ deployment ise replicasetin bir üst objesi olarak dizayn edildi.
 pod tanımında bir güncelleme yaparsak bu güncellemenin belirli kurallara ve sırayla uygulanmasını
 sağlamış oldu.
 
-deployment oluşturulduğunda kendi içinde replicaset oluşturur ve yönetir.
+<b><mark>deployment oluşturulduğunda kendi içinde replicaset oluşturur ve yönetir.
 deployment tanımında değişiklik olursa deployment yeni tanıma göre yeni replicaset oluşturur. 
 ilk oluşturulan replicaset kendi oluşturduğu podları silmeye başlar. yeni replicaset yeni podları yaratır
-silme ve oluşturma işleminin hangi sırayla olacağını ve ne şekilde davranılacağını bizler belirleyebiliriz.
+silme ve oluşturma işleminin hangi sırayla olacağını ve ne şekilde davranılacağını bizler belirleyebiliriz.</mark></b><br>
 
 terminal1
 kubectl get deployments
-kubectl set image deployment/firstdeployment nginx:httpd
-kubectl rollout undo deployment firstdeployment
+<b><mark>kubectl set image deployment/firstdeployment nginx:httpd</mark></b><br>
+<b><mark>kubectl rollout undo deployment firstdeployment</mark></b><br>
 //son değişikliği geri alır
 
 terminal2
