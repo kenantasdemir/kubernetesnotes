@@ -56,7 +56,7 @@ kubectl exec envpod -- printenv
 //envpod içinde printenv komutunu çalıştırır.
 
 terminal1
-kubectl port-forward pod/envpod 8080:80
+<b><mark>kubectl port-forward pod/envpod 8080:80</mark></b><br>
 //envpod adlı pod'un 80 numaralı hedef portunu yerel 8080 numaralı portuna yönlendirir.
 
 terminal2
