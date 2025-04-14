@@ -129,9 +129,9 @@ kubectl get pods --watch
 
 -------------------------------------------------------------------------------------------------
 
-kubectl delete pod --field-selector=status.phase=Succeeded
-kubectl delete pod --field-selector=status.phase=Failed
-kubectl delete rs --all
+<b><mark>kubectl delete pod --field-selector=status.phase=Succeeded</mark></b><br>
+<b><mark>kubectl delete pod --field-selector=status.phase=Failed</mark></b><br>
+<b><mark>kubectl delete rs --all</mark></b><br>
 
 
 
