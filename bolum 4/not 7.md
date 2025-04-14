@@ -20,9 +20,9 @@ watch kubectl get rs
 
 -------------------------------------------------------
 
-terminal1
-kubectl delete -f deploymentcreate.yaml
-kubectl apply -f deployrolling.yaml --record
+terminal1<br>
+kubectl delete -f deploymentcreate.yaml<br>
+kubectl apply -f deployrolling.yaml --record<br>
 <b><mark>kubectl edit deployment rolldeployment --record</mark></b><br>
 //rolldeployment objesini düzenlemeniz için terminalde yaml formatında görüntüler.<br>
 //--record parametresi ile de revision history'ye kaydedilir.<br>
