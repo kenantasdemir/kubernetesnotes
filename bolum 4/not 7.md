@@ -105,15 +105,15 @@ Bu odak nedeniyle, CNI geniş bir desteğe sahiptir ve spesifikasyonun uygulanma
 
 istediğiniz CNI plug-in'ini kullanabilirsiniz.
 
-Dış dünyadan containerlar ile haberleşmek isterseniz service objeleri işinizi görecektir.
+<b><mark>Dış dünyadan containerlar ile haberleşmek isterseniz service objeleri işinizi görecektir.</mark></b><br>
 
 herbir worker node üzerinde bir adet virtual bridge oluşturulur.
 
-yeni bir pod olşturulduğunda o pod için linux kernelinde ayrı bir network namespacei oluşturulur
+<b><mark>yeni bir pod olşturulduğunda o pod için linux kernelinde ayrı bir network namespacei oluşturulur
 ve bu podun sanat ethernet0 interfaceine bu pod cidr adres bloğundan bir ip adres atanır 
-bulunduğu host üzerindeki bridgee bağlanır labellar sayesinde objeler arasında bağlantı kurulur.
+bulunduğu host üzerindeki bridgee bağlanır labellar sayesinde objeler arasında bağlantı kurulur.</mark></b><br>
 
-clusterIP virtual bir ip'ye sahiptir ve herhangi bir interface'a map edilmez
+<b><mark>clusterIP virtual bir ip'ye sahiptir ve herhangi bir interface'a map edilmez</mark></b><br>
 
 terminal1
 kubectl apply -f deploy.yaml
@@ -197,10 +197,11 @@ kubectl get service
 
 ------------------------------------------------------------------------------------
 
-bir servis oluşturduğumuzda servis endpoint denen bir obje oluşturur.
+<b><mark>bir servis oluşturduğumuzda servis endpoint denen bir obje oluşturur.
 biizm belirlediğimiz selector tarafından seçilen podların ip adreslerini
 üstünde barındırır.
 servis trafiğini nereye yönlendireceğini bu listeye göre düzenler.
+</mark></b><br>
 
 terminal1
 kubectl get endpoints
@@ -230,9 +231,11 @@ Deployment oluşturulduğu zaman arkaplanda replicaset oluşturur.
 Service oluşturulduğu zaman arkaplanda endpoint oluşturur.
 
 NodePort
+<b><mark>
 bu servis türü, clusterın dışından gelen bağlantıları çözmek için kullanılır.
 NodePort servislerinin de ClusterIP'si mevcuttur.
 Label selector aracılığıyla podlarla eşleştirilebilir.
+</mark></b><br>
 
 NodePort, Kubernetes'teki Service objelerinden biridir ve cluster içindeki herhangi bir node 
 üzerinde özel bir port numarası atar ve bu port numarası üzerinden Service objesine gelen tüm trafiği 
@@ -241,7 +244,7 @@ Service objesi tarafından yönlendirilen trafiğe erişmesini sağlar.
 
 Örneğin, bir web uygulaması çalıştırdığınızı ve web uygulamasının arkasında üç farklı pod olduğunu varsayalım.
  Bu pod'lar, uygulama sunucusu olarak hizmet vermektedir. 
- NodePort Service objesi, bu pod'ları tek bir IP adresi altında gruplandırır ve 
+<b><mark> NodePort Service objesi, bu pod'ları tek bir IP adresi altında gruplandırır ve </mark></b><br>
  belirli bir port numarası üzerinden erişilebilir hale getirir. 
  Ayrıca, bu Service objesi, her node'a özel bir port numarası atayarak, 
  cluster dışındaki kaynakların bu node'a erişmesine izin verir.
@@ -254,9 +257,10 @@ minikube service --url myfirstservice
 //komutu ile tünel açılabilir.
 
 ClusterIP
+<b><mark>
 Label selector ile podlarla ilişkilendirilebilir.
 Bu obje Cluster içerisindeki tüm podların ve kaynakların çözebilecğei 
-unique bir DNS ismine  sahip olur.
+unique bir DNS ismine  sahip olur.</mark></b><br>
 
 Bu Service türü, pod'ları tek bir IP adresi altında gruplandırır ve 
 belirli bir port numarası üzerinden erişilebilir hale getirir.
@@ -268,7 +272,7 @@ gruplandırır ve belirli bir port numarası üzerinden erişilebilir hale getir
 
 containerlar arası iletişimde kullanılır.
 Load-Balancing ve service discovery görevlerini üstlenir
-bir ClusterIP servisi oluşturup labellar sayesinde podlarla ilişkilendiririz.
+<b><mark>bir ClusterIP servisi oluşturup labellar sayesinde podlarla ilişkilendiririz.</mark></b><br>
 Bu nesneyi yarattığmız zaman, Cluster içerisindeki tüm podların 
 çözebileceği unique bir DNS adrese sahip olur.
 Ayrıca her kubernetes kurulumunda sanal bir IP aralığına sahip olur.
@@ -279,9 +283,9 @@ bahsedilen IP aralığından bir ip atanır ve servis ismi ile bu ip
 adresi Cluster'ın DNS mekanizmasına kaydedilir. 
 Bu IP adresi sanal(virtual) bir ip adresidir.
 
-Kube-Proxy tarafından tüm nodeların üstündeki IP tablosuna bu 
+<b><mark>Kube-Proxy tarafından tüm nodeların üstündeki IP tablosuna bu 
 IP adresi eklenir. Bu ip adresine gelen istekler Round Tropping 
-algoritmasıyla podlara yönlendirilir.
+algoritmasıyla podlara yönlendirilir.</mark></b><br>
 
 
 LoadBalancer
@@ -297,7 +301,7 @@ dengeleyici oluşturur ve uygulama servislerini yük dengeleyici
 üzerinden dış dünyaya açar.
 
 ExternalName
-Uygulama servislerine DNS adları üzerinden erişmek için kullanılır. 
+<b><mark>Uygulama servislerine DNS adları üzerinden erişmek için kullanılır.</mark></b><br> 
 ExternalName Service objesi, cluster içinde bir DNS ismi olarak 
 erişilebilen, farklı bir dış DNS adıyla eşleştirilir.
 
@@ -309,8 +313,9 @@ ExternalName Service objesi, bu senaryoda kullanılabilir.
 
 Dikkat Edilmesi Gerekenler
 Pod ve Service objeleri arasındaki etiketleme tutarlılığına dikkat edin. 
-Service objesi, etiketlerle belirlenen podları yönlendirecektir, 
+<b><mark>Service objesi, etiketlerle belirlenen podları yönlendirecektir, 
 bu nedenle Service ve pod etiketlerinin örtüşmesi gerekir.
+</mark></b><br>
 
 Service objesi türünü doğru şekilde belirleyin. 
 ClusterIP, NodePort, LoadBalancer veya ExternalName türleri mevcuttur 
@@ -323,8 +328,9 @@ Service objesi, yönlendirdiği podların sağlığını kontrol etmez.
 Bu nedenle, hedef podlarının sağlığını kontrol eden bir 
 readinessProbe veya livenessProbe belirlemek önemlidir.
 
-Service objesi konfigürasyonunu güncellediğinizde, 
+<b><mark>Service objesi konfigürasyonunu güncellediğinizde, 
 podların otomatik olarak yeniden başlatılmayacağına dikkat edin. 
+</mark></b><br>
 Bu nedenle, Service objesi konfigürasyonunu değiştirdiğinizde, 
 ilgili podları da manuel olarak yeniden başlatmanız gerekebilir.
 
