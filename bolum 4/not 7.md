@@ -23,10 +23,10 @@ watch kubectl get rs
 terminal1
 kubectl delete -f deploymentcreate.yaml
 kubectl apply -f deployrolling.yaml --record
-kubectl edit deployment rolldeployment --record
-//rolldeployment objesini düzenlemeniz için terminalde yaml formatında görüntüler.
-//--record parametresi ile de revision history'ye kaydedilir.
-//kubectl rollout history ile yapılan düzenlemeye erişebilirsiniz.
+<b><mark>kubectl edit deployment rolldeployment --record</mark></b><br>
+//rolldeployment objesini düzenlemeniz için terminalde yaml formatında görüntüler.<br>
+//--record parametresi ile de revision history'ye kaydedilir.<br>
+//kubectl rollout history ile yapılan düzenlemeye erişebilirsiniz.<br>
 
 kubectl set image deployment rolldeployment nginx=httpd:alpine --record=true
 //rolldeployment isimli deployment nesnesinin imajını nginx=httpd:altpine olarak günceller.
