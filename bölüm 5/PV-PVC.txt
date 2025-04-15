@@ -13,9 +13,9 @@ tarafından talep edilir.
 Persistent Volume Claim (PVC), PV'ye talepte bulunmak için kullanılan bir 
 objedir. PVC'ler, PV'lerin kapasitesini, erişim modunu ve diğer özelliklerini
 tanımlar. PVC'ler, Kubernetes kullanıcıları tarafından oluşturulur ve 
-Kubernetes tarafından otomatik olarak bir PV ile eşleştirilir. Bir PVC 
+Kubernetes tarafından otomatik olarak bir PV ile eşleştirilir. <b><mark>Bir PVC 
 oluşturulduğunda, PVC, mevcut bir PV ile eşleşebilirse, mevcut PV'yi talep 
-eder veya yoksa yeni bir PV oluşturur.
+eder veya yoksa yeni bir PV oluşturur.</mark></b><br>
 
 
 PV ve PVC, Kubernetes kümesindeki uygulamaların verilerini kalıcı olarak saklamak için kullanılır. Örneğin, bir web uygulaması için kullanılan veritabanı, bir PV'ye bağlanabilir ve uygulama yeniden başlatıldığında veya yeni bir pod oluşturulduğunda bile veriler korunabilir. Bu sayede, uygulama hizmetlerinin kesintiye uğramadan çalışmasına olanak sağlar.
@@ -57,7 +57,7 @@ kubectl describe pod mysqldeploymentAdi
 minikube node add
 kubectl get nodes
 
-kubectl taint node minikube a=b:NoExecute
+<b><mark>kubectl taint node minikube a=b:NoExecute</mark></b><br>
 kubectl describe pod mysqldeploymentAdi
 
 minikube delete
