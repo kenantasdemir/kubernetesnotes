@@ -4,27 +4,27 @@ kubectl config use-context minikube
 kubectl apply -f serviceaccount.yaml
 
 Kullanıcı hesapları insanlar içindir.
-service accounts podlarda çalışan processler tarafından kullanılmak üzere tasarlanmıştır.
+<b><mark>service accounts podlarda çalışan processler tarafından kullanılmak üzere tasarlanmıştır.</mark></b><br>
 
 
 kubectl get sa
 //serivceaccount objelerini görüntüler.
 
-kubernetes her namespace için bir adet default isimli service account oluşturulur
-ve her poda aksi belirtilmedikçe bu service account bağlanır. hiçbir yetkisi yoktur.
-istersek bunlara role ya da clusterrole bind ederek gerekli yetkiyi verebiliriz.
-
+<b><mark>kubernetes her namespace için bir adet default isimli service account oluşturulur.</mark></b><br>
+<b><mark>ve her poda aksi belirtilmedikçe bu service account bağlanır. hiçbir yetkisi yoktur.</mark></b><br>
+<b><mark>istersek bunlara role ya da clusterrole bind ederek gerekli yetkiyi verebiliriz.</mark></b><br>
 
 kubectl get pods
 kubectl exec -it testpod -- bash
 cd /var/run/secrets/kubernetes.io/serviceaccount/
 
-oluşturulan serviceaccount için bir secret oluşturulur
-bu secretta 3 bilgi bulunur
-serviceaccountun oluşturulduğu namespace adı
-sertifika bilgisi
-kimlik doğrulaması için JWT bilgisi
 
+oluşturulan serviceaccount için bir secret oluşturulur bu secretta 3 bilgi bulunur
+<ul>
+  <li>serviceaccountun oluşturulduğu namespace adı</li>
+  <li>sertifika bilgisi</li>
+  <li>kimlik doğrulaması için JWT bilgisi</li>
+</ul>
 
 her kubernetes cluster kurulumunda kubernetes içerisinden api servera erişilebilsin diye
 kubernetes isimli bir service yaratılır
