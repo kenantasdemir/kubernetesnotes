@@ -1,17 +1,17 @@
-ConfigMap
+ConfigMap (gizli olmayan konfigurasyon verileri)
 ConfigMap’ler Secret objectleriyle tamamen aynı mantıkta çalışır. 
-Tek farkı; Secret’lar etcd üzerinde base64 ile encoded edilerek encrypted bir şekilde saklanır. 
-ConfigMap’ler ise encrypted edilmez ve bu sebeple hassas datalar içermemelidir.
+Tek farkı; Secret’lar etcd üzerinde base64 ile encode edilerek encoded bir şekilde saklanır. 
+ConfigMap’ler ise encode edilmez ve bu sebeple hassas datalar içermemelidir.
 Pod içerisine Volume veya Env. Variables olarak tanımlayabiliriz.
 Gizli olmayan verileri anahtar-değer eşlenikleri olarak depolamak için kullanılan bir API nesnesidir.
 Podlar, configmapi environment variable, komut satırı argümanları veya bir volume olarak bağlanan apılandırma dosyaları olarak kullanabilir.
 
 configmapler oluştururlen tip belirtmemize gerek yoktur.
 
-kubectl create configmap myconfigmap --from-literal=background=blue --from-file=a.txt
-//myconfigmap adlı configmap nesnesi oluşturur.
-//ekleyeceğiniz tek bir değer varsa --from-literal ile ekleyebilirsiniz.
-//ya da gerekli configurasyonları bir dosyada belirtip --from-file ile bu dosyayı belirtebilirsiniz. 
+<b><mark>kubectl create configmap myconfigmap --from-literal=background=blue --from-file=a.txt</mark></b><br>
+//myconfigmap adlı configmap nesnesi oluşturur.<br>
+//ekleyeceğiniz tek bir değer varsa --from-literal ile ekleyebilirsiniz.<br>
+//ya da gerekli configurasyonları bir dosyada belirtip --from-file ile bu dosyayı belirtebilirsiniz. <br>
 
 kubectl get configmaps
 //tüm configmapleri listeler.
@@ -48,10 +48,9 @@ subPath ile configMap içerisindeki dosyanın (ÖR: config.json) ismini vermemiz
 Böylelikle Pod yaratılırken “Bu dosyanın ismi değişecek.” demiş oluyoruz.
 
 
+<b><mark>kubectl delete secrets mysecret1 --now=true</mark></b><br>
 
-kubectl delete secrets mysecret1 --now=true
-
-kubectl delete secrets mysecret2 --grade-period=1
+<b><mark>kubectl delete secrets mysecret2 --grade-period=1</mark></b><br>
 //mysecret2 adlı secret nesnesini siler.
 
 terminal1
