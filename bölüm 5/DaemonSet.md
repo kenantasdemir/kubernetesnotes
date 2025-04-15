@@ -1,5 +1,5 @@
 DaemonSet
-tüm veya bazı nodeların bir podun bir kopyaasını çalıştırmasını sağlar.
+<b><mark>tüm veya bazı nodeların bir podun bir kopyaasını çalıştırmasını sağlar.</mark></b><br>
 clustera yeni node eklendikçe, onlara podlar da eklenir.
 clusterdan node kaldırıldığında bu podlar da kaldırılır.
 bir daemonsetin silinmesi oluşturduğu podları da temizleyecektir.
@@ -7,7 +7,7 @@ bir daemonsetin silinmesi oluşturduğu podları da temizleyecektir.
 DaemonSet, Kubernetes'teki bir controller türüdür ve belirli bir pod'un, cluster'daki her bir node'da (veya belirli node'larda) çalışmasını sağlamak için kullanılır. DaemonSet, bir pod'un her bir node'da yalnızca bir kez çalışmasını garanti eder. Bu özellik, genellikle log toplama, monitoring (izleme), ağ proxy'leri veya sistem yönetimi gibi node'a özel görevleri gerçekleştirmek için kullanılır.
 
 DaemonSet'in Temel Özellikleri
-Her Node'da Pod Çalıştırma: DaemonSet, cluster'daki her node üzerinde bir pod çalıştırır. Eğer yeni bir node cluster'a eklenirse, DaemonSet otomatik olarak o node'da da pod oluşturur.
+Her Node'da Pod Çalıştırma: <b><mark>DaemonSet, cluster'daki her node üzerinde bir pod çalıştırır. </mark></b><br>.Eğer yeni bir node cluster'a eklenirse, DaemonSet otomatik olarak o node'da da pod oluşturur.
 Otomatik Pod Ekleme: Cluster'a yeni node eklendiğinde, DaemonSet'e bağlı pod, bu yeni node'a da otomatik olarak dağıtılır.
 Pod Yönetimi: DaemonSet, cluster'daki tüm node'larda aynı pod'un çalışmasını sağlayarak, pod'ları yönetir. DaemonSet, bu pod'ları gerektiğinde günceller, yeniden başlatır ve yönetir.
 Kullanım Senaryoları
