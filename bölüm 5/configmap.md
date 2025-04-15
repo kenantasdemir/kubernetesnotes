@@ -1,4 +1,4 @@
-ConfigMap (gizli olmayan konfigurasyon verileri)
+# ConfigMap (gizli olmayan konfigurasyon verileri)
 ConfigMap’ler Secret objectleriyle tamamen aynı mantıkta çalışır. 
 Tek farkı; Secret’lar etcd üzerinde base64 ile encode edilerek encoded bir şekilde saklanır. 
 ConfigMap’ler ise encode edilmez ve bu sebeple hassas datalar içermemelidir.
