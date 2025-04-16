@@ -5,6 +5,11 @@
 <b><mark>bu containerlar arasında network izolasyonu bulunmaz</mark></b><br>
 <b><mark>tek bir volume yaratılarak her iki containerada mount edilebilir.</mark></b><br>
 
+Aynı pod içinde tanımlanmış tüm containerlar aynı worker node üstünde oluşturulur.
+Containerlar ayrı birer ünitedir fakat pod’un lifecycle’i içinde yönetilir. Yani pod oluşturulunca iki container birden oluşturulur ve silinirse de iki container birden silinir. 
+Bu containerlar arasında network izolasyonu bulunmaz Yani aynı pod içinde çalışan A ve B containerları birbirlerine localhost üstünden ulaşabilirler. Bunlar network bakımından sanki aynı makinede çalışan processler gibidir. 
+Tek bir volüme yaratılarak her iki container’a da mount edilebilir. Böylelikle aynı dosyalar üstünde çalışabilirler.
+
 
 ----------------------------------------------------------------------------------------------------
 
