@@ -14,12 +14,12 @@ key: Taint'in anahtarı, genellikle tanımlayıcı bir string.
 value: Taint ile ilişkilendirilen değer (opsiyonel).
 effect: Taint'in etkisi, üç farklı türü vardır:
 
-NoSchedule: Bu node'a taint uygulanmışsa, sadece toleration'a sahip pod'lar bu node'a schedule edilir. Diğer pod'lar bu node üzerinde çalıştırılamaz.
-PreferNoSchedule: Bu etki, mümkünse pod'ların bu node'a schedule edilmesini engeller, ancak zorunlu değildir. Yani, bu node'a toleration olan pod'lar yine çalıştırılabilir.
-NoExecute: Taint uygulanmış node üzerinde zaten çalışan pod'lar, taint etkisi altındaysa çalıştırılmaya devam etmez ve pod'lar hemen dışlanır.
+NoSchedule: Bu node'a taint uygulanmışsa, sadece toleration'a sahip pod'lar bu node'a schedule edilir. Diğer pod'lar bu node üzerinde çalıştırılamaz. <br>
+PreferNoSchedule: Bu etki, mümkünse pod'ların bu node'a schedule edilmesini engeller, ancak zorunlu değildir. Yani, bu node'a toleration olan pod'lar yine çalıştırılabilir. <br>
+NoExecute: Taint uygulanmış node üzerinde zaten çalışan pod'lar, taint etkisi altındaysa çalıştırılmaya devam etmez ve pod'lar hemen dışlanır. <br>
+
 Örnek:
 Bir node'a NoSchedule taint uygulamak için şu komut kullanılır:
-
 
 kubectl taint nodes <node-name> key=value:NoSchedule
 Bu komut, belirtilen node üzerinde key=value şeklinde bir taint uygular ve bu node'a sadece ilgili toleration'a sahip pod'lar yerleştirilebilir.
