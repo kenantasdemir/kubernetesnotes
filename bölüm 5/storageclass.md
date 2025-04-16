@@ -1,5 +1,5 @@
 
-Storage class
+# Storage Class
 StorageClass, yöneticilerin sundukları depolama "sınıflarını" tanımlamaları 
 için bir yol sağlar. Farklı sınıflar, hizmet kalitesi düzeylerine veya 
 yedekleme ilkelerine veya cluster yöneticileri tarafından belirlenen isteğe 
@@ -14,8 +14,9 @@ türüdür. Bu nesne, Kubernetes cluster'ındaki depolama sistemlerine nasıl
 erişileceğini, hangi depolama türlerinin kullanılacağını ve bu depolama 
 kaynaklarının nasıl yönetileceğini belirler.
 
+---
 
-StorageClass'ın Temel Özellikleri
+# StorageClass'ın Temel Özellikleri
 Depolama Yönetimini Otomatikleştirir: StorageClass, bir PersistentVolumeClaim
 (PVC) oluşturulurken hangi depolama sağlayıcısının ve parametrelerinin 
 kullanılacağını belirtir. Bu sayede, Kubernetes bir PVC oluşturduğunda doğru 
@@ -40,23 +41,29 @@ Performans ve Özellikler: StorageClass ile depolama birimlerinin özellikleri
 belirlenebilir. Örneğin, SSD veya HDD kullanımı, depolama boyutu, replikasyon 
 stratejileri gibi özellikler ayarlanabilir.
 
+---
 
-StorageClass'ın Yapısı ve Parametreler
+# StorageClass'ın Yapısı ve Parametreler
 Bir StorageClass nesnesi, çeşitli özelliklere sahip olabilir. Bu özellikler şunlardır:
 
-Provisioner: Hangi depolama sağlayıcısının kullanılacağını belirler. Bu, 
+<b><mark>Provisioner</mark></b>: Hangi depolama sağlayıcısının kullanılacağını belirler. Bu, 
 genellikle bir bulut sağlayıcısının veya bir depolama sisteminin driver'ıdır.
 Örneğin, AWS için kubernetes.io/aws-ebs, Google Cloud için kubernetes.io/gce-
 pd olabilir.
-Parameters: Depolama sağlayıcısının özelliklerini belirten parametrelerdir. 
+
+<b><mark>Parameters</mark></b>: Depolama sağlayıcısının özelliklerini belirten parametrelerdir. 
 Bu parametreler, örneğin disk türü (ssd, hdd), şifreleme özellikleri veya 
 diğer sağlayıcıya özgü ayarları içerebilir.
 
-ReclaimPolicy: PVC silindiğinde, PV'nin ne olacağını belirler. İki ana değer vardır:
+<b><mark>ReclaimPolicy</mark></b>: PVC silindiğinde, PV'nin ne olacağını belirler. İki ana değer vardır:
 Retain: PVC silindiğinde, ilgili PV korunur.
 Delete: PVC silindiğinde, ilgili PV de silinir.
-VolumeBindingMode: PVC ile PV'nin nasıl ilişkilendirileceğini belirtir. Bu değer Immediate veya WaitForFirstConsumer olabilir. WaitForFirstConsumer, pod talep edilene kadar depolama kaynağının oluşturulmasını erteleme seçeneğidir.
-AllowVolumeExpansion: Bu seçenek, PV'nin boyutunun genişletilip genişletilemeyeceğini belirler.
+
+<b><mark>VolumeBindingMode</mark></b>: PVC ile PV'nin nasıl ilişkilendirileceğini belirtir. 
+Bu değer Immediate veya WaitForFirstConsumer olabilir. 
+WaitForFirstConsumer, pod talep edilene kadar depolama kaynağının oluşturulmasını erteleme seçeneğidir.
+
+<b><mark>AllowVolumeExpansion</mark></b>: Bu seçenek, PV'nin boyutunun genişletilip genişletilemeyeceğini belirler.
 
 
 terminal1
