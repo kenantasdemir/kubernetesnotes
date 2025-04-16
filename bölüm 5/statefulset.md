@@ -1,3 +1,5 @@
+# Singleton Pod
+
 Singleton pod, yalnızca bir örneği çalıştırılan bir Kubernetes pod'udur. 
 Yani, bir Singleton pod yalnızca bir pod örneğinden oluşur ve bu pod'un 
 birden fazla çoğaltması yoktur.
@@ -23,6 +25,29 @@ kullanıldığında avantajlı olabilirler.
 İşlemler manuel ve zahmetli
 singleton podların fail durumunu kontrol eden bir mekanizma yok.
 yeni bir pod eklemek ya da çıkarmak istenilirse tüm süreci siz yönetmelisiniz.
+
+# StatefullSet
+
+StatefulSet, Kubernetes'te durum bilgisi olan (stateful) uygulamaları yönetmek için kullanılan bir nesnedir. Özellikle her pod’un kendine özgü kimliğe (hostname, storage, IP vs.) sahip olması gerektiği durumlar için tasarlanmıştır.
+
+Kısaca söylemek gerekirse:
+
+Deployment, stateless (durumsuz) uygulamalar içindir.
+StatefulSet, stateful (durumlu) uygulamalar içindir.
+
+📛 Sabit Pod İsimleri	Her pod sıralı ve sabit isimle oluşturulur: app-0, app-1, app-2, ...
+🧾 Sabit Volume	Her pod'a özgü PersistentVolumeClaim (PVC) oluşturulur ve bu volume ona ait kalır.
+🔁 Sıralı Başlatma & Silme	Pod’lar sıralı olarak başlatılır (app-0 → app-1 → ...) ve yine sıralı olarak silinir.
+♻️ Yeniden başlatmada aynı kimlik	Pod silinip yeniden başlatılsa bile aynı adı, IP’yi ve volume’u kullanır.
+
+🧱 Ne zaman StatefulSet kullanmalıyım?
+Veritabanları: MySQL, PostgreSQL, MongoDB, Cassandra...
+
+Zookeeper, Kafka gibi quorum tabanlı sistemler
+
+Her pod'un kendi persistent storage’ına sahip olması gerekiyorsa
+
+Network üzerinden her pod’un sabit bir isme/IP’ye ihtiyacı varsa
 
 
 terminal1
