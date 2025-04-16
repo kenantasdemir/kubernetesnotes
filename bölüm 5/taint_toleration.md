@@ -55,17 +55,17 @@ Node Bakımı: Node üzerinde bakım yapılacaksa, bakım sırasında o node üz
 
 terminal1
 kubectl get nodes
-kubectl describe nodes minikube
-kubectl taint node minikube platform=production:NoSchedule
-kubectl taint node minikube platform-
-kubectl taint node minikube platform=production:NoSchedule
+kubectl describe nodes minikube <br>
+kubectl taint node minikube platform=production:NoSchedule <br>
+kubectl taint node minikube platform- <br>
+kubectl taint node minikube platform=production:NoSchedule <br>
 
-kubectl run test --image:nginx --restart=Never
-kubectl describe pod test
+kubectl run test --image:nginx --restart=Never <br>
+kubectl describe pod test<br>
 
-kubectl apply -f podtoleration.yaml
+kubectl apply -f podtoleration.yaml<br>
 
-kubectl taint node minikube color=blue:NoExecute
+kubectl taint node minikube color=blue:NoExecute <br>
 color=blue anahtarını tolere edemeyen podları bunun üzerinde schedule etme
 aynı zamanda bunların üzerinde çalışan podlar varsa ve bu tainti tolere edemiyorlarsa
 bunları bu podun üzerinden kaldır anlamına gelir.
