@@ -75,5 +75,5 @@ terminal2
 kubectl get pods -w
 
 
-ephemeral volumeler podun yaşam süresi boyunca geçerli
+<b><mark>ephemeral volumeler podun yaşam süresi boyunca geçerli</mark></b><br>
 
