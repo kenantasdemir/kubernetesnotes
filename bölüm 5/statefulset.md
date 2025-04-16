@@ -10,6 +10,7 @@ kullanılabilir. Örneğin, bir yedekleme işlemi sırasında yalnızca bir pod'
 çalıştırılması gerekebilir. Bir Singleton pod, bir Deployment, ReplicaSet 
 veya StatefulSet aracılığıyla oluşturulabilir.
 
+---
 
 Kubernetes, Singleton pod'ların tek örneğinin herhangi bir sebeple durması
 durumunda otomatik olarak yeniden başlatılmasını sağlayabilir. Ayrıca, bir 
@@ -35,20 +36,25 @@ Kısaca söylemek gerekirse:
 Deployment, stateless (durumsuz) uygulamalar içindir.
 StatefulSet, stateful (durumlu) uygulamalar içindir.
 
-📛 Sabit Pod İsimleri	Her pod sıralı ve sabit isimle oluşturulur: app-0, app-1, app-2, ...
-🧾 Sabit Volume	Her pod'a özgü PersistentVolumeClaim (PVC) oluşturulur ve bu volume ona ait kalır.
-🔁 Sıralı Başlatma & Silme	Pod’lar sıralı olarak başlatılır (app-0 → app-1 → ...) ve yine sıralı olarak silinir.
-♻️ Yeniden başlatmada aynı kimlik	Pod silinip yeniden başlatılsa bile aynı adı, IP’yi ve volume’u kullanır.
+---
+
+📛 Sabit Pod İsimleri	Her pod sıralı ve sabit isimle oluşturulur: app-0, app-1, app-2, ... <br>
+🧾 Sabit Volume	Her pod'a özgü PersistentVolumeClaim (PVC) oluşturulur ve bu volume ona ait kalır. <br>
+🔁 Sıralı Başlatma & Silme	Pod’lar sıralı olarak başlatılır (app-0 → app-1 → ...) ve yine sıralı olarak silinir. <br>
+♻️ Yeniden başlatmada aynı kimlik	Pod silinip yeniden başlatılsa bile aynı adı, IP’yi ve volume’u kullanır. <br>
+
+---
 
 🧱 Ne zaman StatefulSet kullanmalıyım?
-Veritabanları: MySQL, PostgreSQL, MongoDB, Cassandra...
+Veritabanları: MySQL, PostgreSQL, MongoDB, Cassandra... <br>
 
-Zookeeper, Kafka gibi quorum tabanlı sistemler
+Zookeeper, Kafka gibi quorum tabanlı sistemler <br>
 
-Her pod'un kendi persistent storage’ına sahip olması gerekiyorsa
+Her pod'un kendi persistent storage’ına sahip olması gerekiyorsa <br>
 
-Network üzerinden her pod’un sabit bir isme/IP’ye ihtiyacı varsa
+Network üzerinden her pod’un sabit bir isme/IP’ye ihtiyacı varsa <br>
 
+---
 
 terminal1
 kubectl apply -f statefulset.yaml
