@@ -1,12 +1,11 @@
-nodelar üstünde önceden tanımlanmış birçok label bulunur
-affinity tanımları bir podun nerede schedule edileceğiniz tanımlar.
+# Taint and Toleration
 
 Taint ve toleration
 NoSchedule, PreferNoSchedule, NoExecute
 
-Taint, bir node'a uygulanan etiket veya işarettir. Taint, o node'un belirli pod'lar tarafından kullanılmasını engeller, ancak bu engellemeyi esnek hale getirmek için toleration eklenebilir.
+<b>mark>Taint, bir node'a uygulanan etiket veya işarettir. Taint, o node'un belirli pod'lar tarafından kullanılmasını engeller, ancak bu engellemeyi esnek hale getirmek için toleration eklenebilir.</mark></b><br>
 
-Taint, genellikle bir node'a belirli bir koşul ya da özellik eklemek için kullanılır. Örneğin, bir node bakımda olduğunda o node'a bir taint ekleyerek, o node'daki pod'ların çalışmasını engelleyebilirsiniz.
+<b><mark>Taint, genellikle bir node'a belirli bir koşul ya da özellik eklemek için kullanılır. Örneğin, bir node bakımda olduğunda o node'a bir taint ekleyerek, o node'daki pod'ların çalışmasını engelleyebilirsiniz.</mark></b><br>
 
 Taint yapısının genel formatı:
 
@@ -14,6 +13,7 @@ Taint yapısının genel formatı:
 key: Taint'in anahtarı, genellikle tanımlayıcı bir string.
 value: Taint ile ilişkilendirilen değer (opsiyonel).
 effect: Taint'in etkisi, üç farklı türü vardır:
+
 NoSchedule: Bu node'a taint uygulanmışsa, sadece toleration'a sahip pod'lar bu node'a schedule edilir. Diğer pod'lar bu node üzerinde çalıştırılamaz.
 PreferNoSchedule: Bu etki, mümkünse pod'ların bu node'a schedule edilmesini engeller, ancak zorunlu değildir. Yani, bu node'a toleration olan pod'lar yine çalıştırılabilir.
 NoExecute: Taint uygulanmış node üzerinde zaten çalışan pod'lar, taint etkisi altındaysa çalıştırılmaya devam etmez ve pod'lar hemen dışlanır.
@@ -24,7 +24,7 @@ Bir node'a NoSchedule taint uygulamak için şu komut kullanılır:
 kubectl taint nodes <node-name> key=value:NoSchedule
 Bu komut, belirtilen node üzerinde key=value şeklinde bir taint uygular ve bu node'a sadece ilgili toleration'a sahip pod'lar yerleştirilebilir.
 
-2. Toleration (Hoşgörü)
+2. Toleration 
 Toleration, bir pod'un taint'lere karşı duyarlı olup olmadığını belirtir. Yani, bir pod'un node'da taint varsa, bu pod'un o node'a yerleştirilebilmesi için bir toleration'a sahip olması gerekir.
 
 Toleration, pod tanımında yer alır ve taint'e karşı tolerans sağlar. Bir pod, taint'e sahip bir node'a yerleştirilmek isteniyorsa, bu pod’un toleration’a sahip olması gerekir.
@@ -34,8 +34,7 @@ Toleration, taint'in etkisini kabul eden bir "izin" gibidir. Bir pod, bir node'a
 Örnek:
 Bir pod'un taint'e karşı toleration eklemek için aşağıdaki gibi bir pod tanımı yapılır:
 
-yaml
-Kopyala
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -46,6 +45,7 @@ spec:
     operator: "Equal"
     value: "value"
     effect: "NoSchedule"
+```
 
 Yukarıdaki örnekte, mypod adlı pod, key=value taint'i ile işaretlenmiş node'lara NoSchedule etkisiyle yerleştirilebilir. Yani, pod'un toleration'ı olduğu için taint'e sahip node'a schedule edilmesine izin verilir.
 
