@@ -3,7 +3,7 @@
 Taint ve toleration
 NoSchedule, PreferNoSchedule, NoExecute
 
-<b>mark>Taint, bir node'a uygulanan etiket veya işarettir. Taint, o node'un belirli pod'lar tarafından kullanılmasını engeller, ancak bu engellemeyi esnek hale getirmek için toleration eklenebilir.</mark></b><br>
+<b><mark>Taint, bir node'a uygulanan etiket veya işarettir. Taint, o node'un belirli pod'lar tarafından kullanılmasını engeller, ancak bu engellemeyi esnek hale getirmek için toleration eklenebilir.</mark></b><br>
 
 <b><mark>Taint, genellikle bir node'a belirli bir koşul ya da özellik eklemek için kullanılır. Örneğin, bir node bakımda olduğunda o node'a bir taint ekleyerek, o node'daki pod'ların çalışmasını engelleyebilirsiniz.</mark></b><br>
 
