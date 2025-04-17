@@ -33,7 +33,7 @@ kubectl get pod my-pod -o yaml
 kubectl top pod podName
 //poda ait kaynak kullanım bilgilerini verir.
 
-<b><mark>kubectl get services --sort-by=.metadata.name</mark><b>
+<b><mark>kubectl get services --sort-by=.metadata.name</mark></b>
 
 <b><mark>kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'</mark></b><br>
 
