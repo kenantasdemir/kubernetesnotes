@@ -30,6 +30,9 @@ kubectl create deployment nginx --image=nginx
 
 kubectl get pod my-pod -o yaml 
 
+kubectl top pod podName
+//poda ait kaynak kullanım bilgilerini verir.
+
 kubectl get services --sort-by=.metadata.name
 
 kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'
