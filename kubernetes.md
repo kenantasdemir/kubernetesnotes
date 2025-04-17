@@ -33,15 +33,19 @@ kubectl get pod my-pod -o yaml
 kubectl top pod podName
 //poda ait kaynak kullanım bilgilerini verir.
 
-kubectl get services --sort-by=.metadata.name
+<b><mark>kubectl get services --sort-by=.metadata.name</mark><b>
 
-kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'
+<b><mark>kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'</mark></b><br>
 
-kubectl get pv --sort-by=.spec.capacity.storage
 
-kubectl get node --selector='!node-role.kubernetes.io/master'
+<b><mark>kubectl get pv --sort-by=.spec.capacity.storage</mark></b><br>
 
-kubectl get pods --field-selector=status.phase=Running
+
+<b><mark>kubectl get node --selector='!node-role.kubernetes.io/master'</mark></b><br>
+
+
+<b><mark>kubectl get pods --field-selector=status.phase=Running</mark></b><br>
+
 kubectl get pods --show-labels
 
 kubectl get events --sort-by=.metadata.creationTimestamp
